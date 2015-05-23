@@ -2,6 +2,7 @@ package com.wkdgusdn3.soundcontroler;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -10,26 +11,39 @@ import android.widget.RemoteViews;
 
 public class SoundService extends Service {
 
+    Context context;
+
     NotificationManager notificationManager;
     Notification notification;
     int i = 0;
 
     @Override
     public void onCreate() {
+
+        context = getApplicationContext();
+
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notification = new Notification(android.R.drawable.ic_input_add, "asdf", System.currentTimeMillis());
+        notification = new Notification(R.drawable.sound_icon, "SoundControler", System.currentTimeMillis());
 
+        Intent intent_up = new Intent(getApplicationContext(), ReceiverSoundUp.class);
+        Intent intent_down = new Intent(getApplicationContext(), ReceiverSoundDown.class);
+        Intent intent_mute = new Intent(getApplicationContext(), ReceiverSoundMute.class);
 
-        final RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.progressbar_sound);
-        views.setImageViewResource(R.id.sound_0, android.R.drawable.ic_input_add);
-        views.setImageViewResource(R.id.sound_20, android.R.drawable.ic_input_add);
-        views.setImageViewResource(R.id.sound_40, android.R.drawable.ic_input_add);
-        views.setImageViewResource(R.id.sound_60, android.R.drawable.ic_input_add);
-        views.setImageViewResource(R.id.sound_80, android.R.drawable.ic_input_add);
-        views.setImageViewResource(R.id.sound_100, android.R.drawable.ic_input_add);
+        PendingIntent pendingIntent_up = PendingIntent.getBroadcast(context, 0, intent_up, 0);
+        PendingIntent pendingIntent_down = PendingIntent.getBroadcast(context, 0, intent_down, 0);
+        PendingIntent pendingIntent_mute = PendingIntent.getBroadcast(context, 0, intent_mute, 0);
+
+        final RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.sound_notification);
+        views.setImageViewResource(R.id.sound_icon, R.drawable.sound_icon);
+        views.setImageViewResource(R.id.sound_up, R.drawable.sound_up);
+        views.setImageViewResource(R.id.sound_down, R.drawable.sound_down);
+        views.setImageViewResource(R.id.sound_mute, R.drawable.sound_mute);
+        views.setOnClickPendingIntent(R.id.sound_up, pendingIntent_up);
+        views.setOnClickPendingIntent(R.id.sound_down, pendingIntent_down);
+        views.setOnClickPendingIntent(R.id.sound_mute, pendingIntent_mute);
         notification.contentView = views;
-        notification.flags = Notification.FLAG_AUTO_CANCEL;
-        notificationManager.notify(1234, notification);
+        notification.flags = Notification.FLAG_NO_CLEAR;
+        notificationManager.notify(3, notification);
     }
 
     @Override

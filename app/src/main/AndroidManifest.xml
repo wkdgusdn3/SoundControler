@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wkdgusdn3.soundcontroler" >
+    package="com.wkdgusdn3.soundcontroler">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
@@ -8,10 +8,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,17 +19,20 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.wkdgusdn3.soundcontroler.SoundService" />
+        <service android:name="com.wkdgusdn3.soundcontroler.SoundService" />
 
         <receiver
             android:name="com.wkdgusdn3.soundcontroler.BootReceiver"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverSoundUp" />
+        <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverSoundDown" />
+        <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverSoundMute" />
+
     </application>
 
 </manifest>
