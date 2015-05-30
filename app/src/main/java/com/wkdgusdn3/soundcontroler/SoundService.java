@@ -15,7 +15,6 @@ public class SoundService extends Service {
 
     NotificationManager notificationManager;
     Notification notification;
-    int i = 0;
 
     @Override
     public void onCreate() {
@@ -37,14 +36,23 @@ public class SoundService extends Service {
 
         final RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.sound_notification);
         views.setImageViewResource(R.id.sound_icon, R.drawable.sound_icon);
-        views.setImageViewResource(R.id.music_play, R.drawable.music_play);
-        views.setImageViewResource(R.id.sound_up, R.drawable.sound_up);
-        views.setImageViewResource(R.id.sound_down, R.drawable.sound_down);
-        views.setImageViewResource(R.id.sound_mute, R.drawable.sound_mute);
-        views.setOnClickPendingIntent(R.id.music_play, pendingIntent_play);
-        views.setOnClickPendingIntent(R.id.sound_up, pendingIntent_up);
-        views.setOnClickPendingIntent(R.id.sound_down, pendingIntent_down);
-        views.setOnClickPendingIntent(R.id.sound_mute, pendingIntent_mute);
+        if(InfoManager.boolean_musicPlay) {
+            views.setImageViewResource(R.id.music_play, R.drawable.music_play);
+            views.setOnClickPendingIntent(R.id.music_play, pendingIntent_play);
+        }
+        if(InfoManager.boolean_soundUp) {
+            views.setImageViewResource(R.id.sound_up, R.drawable.sound_up);
+            views.setOnClickPendingIntent(R.id.sound_up, pendingIntent_up);
+        }
+        if(InfoManager.boolean_soundDown) {
+            views.setImageViewResource(R.id.sound_down, R.drawable.sound_down);
+            views.setOnClickPendingIntent(R.id.sound_down, pendingIntent_down);
+        }
+        if(InfoManager.boolean_soundMute) {
+            views.setImageViewResource(R.id.sound_mute, R.drawable.sound_mute);
+            views.setOnClickPendingIntent(R.id.sound_mute, pendingIntent_mute);
+        }
+
         notification.contentView = views;
         notification.flags = Notification.FLAG_NO_CLEAR;
         notificationManager.notify(3, notification);
