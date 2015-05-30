@@ -32,6 +32,7 @@
         <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverSoundUp" />
         <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverSoundDown" />
         <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverSoundMute" />
+        <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverMusicPlay" />
 
     </application>
 
