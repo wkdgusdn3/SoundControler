@@ -22,9 +22,12 @@ public class SoundService extends Service {
         context = getApplicationContext();
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notification = new Notification(R.drawable.sound_icon, "SoundControler", System.currentTimeMillis());
+        if(InfoManager.boolean_icon) {
+            notification = new Notification(R.drawable.sound_icon, "SoundControler", System.currentTimeMillis());
+        } else {
+            notification = new Notification(R.drawable.clear, "SoundControler", System.currentTimeMillis());
+        }
         notification.flags = Notification.FLAG_NO_CLEAR;
-//        notification.icon = 0;
 
         Intent intent_play = new Intent(getApplicationContext(), ReceiverMusicPlay.class);
         Intent intent_up = new Intent(getApplicationContext(), ReceiverSoundUp.class);

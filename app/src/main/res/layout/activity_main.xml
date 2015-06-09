@@ -83,11 +83,30 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/main_iconLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_soundMuteLayout"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/main_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이콘" />
+
+        <CheckBox
+            android:id="@+id/main_iconCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/main_apply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/main_soundMuteLayout"
+        android:layout_below="@id/main_iconLayout"
         android:layout_centerHorizontal="true"
         android:text="적용" />
 

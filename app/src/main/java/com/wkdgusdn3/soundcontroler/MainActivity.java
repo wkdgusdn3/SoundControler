@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
     CheckBox checkBox_soundUp;
     CheckBox checkBox_soundDown;
     CheckBox checkBox_soundMute;
+    CheckBox checkBox_icon;
     Button button_apply;
 
     SharedPreferences sharedPreferences;
@@ -46,6 +47,7 @@ public class MainActivity extends Activity {
         checkBox_soundUp = (CheckBox)findViewById(R.id.main_soundUpCheckBox);
         checkBox_soundDown = (CheckBox)findViewById(R.id.main_soundDownCheckBox);
         checkBox_soundMute = (CheckBox)findViewById(R.id.main_soundMuteCheckBox);
+        checkBox_icon = (CheckBox)findViewById(R.id.main_iconCheckBox);
         button_apply = (Button)findViewById(R.id.main_apply);
     }
 
@@ -62,6 +64,9 @@ public class MainActivity extends Activity {
         if(InfoManager.boolean_soundMute) {
             checkBox_soundMute.setChecked(true);
         }
+        if(InfoManager.boolean_icon) {
+            checkBox_icon.setChecked(true);
+        }
     }
 
     void setClickListener() {
@@ -73,6 +78,7 @@ public class MainActivity extends Activity {
                 editor.putBoolean("SOUNDUP", checkBox_soundUp.isChecked());
                 editor.putBoolean("SOUNDDOWN", checkBox_soundDown.isChecked());
                 editor.putBoolean("SOUNDMUTE", checkBox_soundMute.isChecked());
+                editor.putBoolean("ICON", checkBox_icon.isChecked());
                 editor.commit();
 
                 InfoManager.setData(getApplicationContext());
@@ -88,6 +94,8 @@ public class MainActivity extends Activity {
         soundServiceIntent.putExtra("SOUNDUP", InfoManager.boolean_soundUp);
         soundServiceIntent.putExtra("SOUNDDOWN", InfoManager.boolean_soundDown);
         soundServiceIntent.putExtra("SOUNDMUTE", InfoManager.boolean_soundMute);
+        soundServiceIntent.putExtra("ICON", InfoManager.boolean_icon);
+
         stopService(soundServiceIntent);
         startService(soundServiceIntent);
     }
