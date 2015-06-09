@@ -82,4 +82,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/main_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_soundMuteLayout"
+        android:layout_centerHorizontal="true"
+        android:text="적용" />
+
 </RelativeLayout>

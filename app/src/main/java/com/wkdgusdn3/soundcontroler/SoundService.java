@@ -23,6 +23,8 @@ public class SoundService extends Service {
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notification = new Notification(R.drawable.sound_icon, "SoundControler", System.currentTimeMillis());
+        notification.flags = Notification.FLAG_NO_CLEAR;
+//        notification.icon = 0;
 
         Intent intent_play = new Intent(getApplicationContext(), ReceiverMusicPlay.class);
         Intent intent_up = new Intent(getApplicationContext(), ReceiverSoundUp.class);
@@ -54,7 +56,6 @@ public class SoundService extends Service {
         }
 
         notification.contentView = views;
-        notification.flags = Notification.FLAG_NO_CLEAR;
         notificationManager.notify(3, notification);
     }
 
