@@ -10,6 +10,7 @@ public class InfoManager {
     public static boolean boolean_soundDown;
     public static boolean boolean_soundMute;
     public static boolean boolean_icon;
+    public static int textView;
 
     public static void setData(Context context) {
         SharedPreferences sharedPreferences;

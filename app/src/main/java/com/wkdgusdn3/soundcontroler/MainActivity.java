@@ -90,11 +90,6 @@ public class MainActivity extends Activity {
 
     void startService() {
         Intent soundServiceIntent = new Intent(getApplicationContext(), SoundService.class);
-        soundServiceIntent.putExtra("MUSICPLAY", InfoManager.boolean_musicPlay);
-        soundServiceIntent.putExtra("SOUNDUP", InfoManager.boolean_soundUp);
-        soundServiceIntent.putExtra("SOUNDDOWN", InfoManager.boolean_soundDown);
-        soundServiceIntent.putExtra("SOUNDMUTE", InfoManager.boolean_soundMute);
-        soundServiceIntent.putExtra("ICON", InfoManager.boolean_icon);
 
         stopService(soundServiceIntent);
         startService(soundServiceIntent);

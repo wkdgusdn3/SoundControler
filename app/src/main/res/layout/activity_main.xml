@@ -27,29 +27,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/main_soundUpLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_musicPlayLayout"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/main_soundUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="볼륨 올리기" />
-
-        <CheckBox
-            android:id="@+id/main_soundUpCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/main_soundDownLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/main_soundUpLayout"
+        android:layout_below="@+id/main_musicPlayLayout"
         android:orientation="horizontal">
 
         <TextView
@@ -65,10 +46,29 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/main_soundMuteLayout"
+        android:id="@+id/main_soundUpLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/main_soundDownLayout"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/main_soundUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="볼륨 올리기" />
+
+        <CheckBox
+            android:id="@+id/main_soundUpCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_soundMuteLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_soundUpLayout"
         android:orientation="horizontal">
 
         <TextView
@@ -94,7 +94,7 @@
             android:id="@+id/main_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="아이콘" />
+            android:text="아이콘 보이기" />
 
         <CheckBox
             android:id="@+id/main_iconCheckBox"

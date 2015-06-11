@@ -15,11 +15,5 @@ public class ReceiverMusicPlay extends BroadcastReceiver {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        new Thread(new Runnable() {
-//            public void run() {
-//                new Instrumentation().sendKeySync(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_HEADSETHOOK));
-//            }
-//        }).start();
-//    }
     }
 }
