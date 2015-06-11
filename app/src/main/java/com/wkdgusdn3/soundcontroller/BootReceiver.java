@@ -1,4 +1,4 @@
-package com.wkdgusdn3.soundcontroler;
+package com.wkdgusdn3.soundcontroller;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

@@ -5,8 +5,8 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.wkdgusdn3.soundcontroler"
-        minSdkVersion 21
+        applicationId "com.wkdgusdn3.soundcontroller"
+        minSdkVersion 14
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"

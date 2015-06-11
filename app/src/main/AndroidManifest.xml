@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wkdgusdn3.soundcontroler">
+    package="com.wkdgusdn3.soundcontroller">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
@@ -19,20 +19,20 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.wkdgusdn3.soundcontroler.SoundService" />
+        <service android:name=".SoundService" />
 
         <receiver
-            android:name="com.wkdgusdn3.soundcontroler.BootReceiver"
+            android:name=".BootReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverSoundUp" />
-        <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverSoundDown" />
-        <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverSoundMute" />
-        <receiver android:name="com.wkdgusdn3.soundcontroler.ReceiverMusicPlay" />
+        <receiver android:name=".ReceiverSoundUp" />
+        <receiver android:name=".ReceiverSoundDown" />
+        <receiver android:name=".ReceiverSoundMute" />
+        <receiver android:name=".ReceiverMusicPlay" />
 
     </application>
 

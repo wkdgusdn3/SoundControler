@@ -1,4 +1,4 @@
-package com.wkdgusdn3.soundcontroler;
+package com.wkdgusdn3.soundcontroller;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.wkdgusdn3.soundcontroller.R.layout.activity_main);
 
         InfoManager.setData(getApplicationContext());
 
@@ -43,12 +43,12 @@ public class MainActivity extends Activity {
     }
 
     void setView() {
-        checkBox_musicPlay = (CheckBox)findViewById(R.id.main_musicPlayCheckBox);
-        checkBox_soundUp = (CheckBox)findViewById(R.id.main_soundUpCheckBox);
-        checkBox_soundDown = (CheckBox)findViewById(R.id.main_soundDownCheckBox);
-        checkBox_soundMute = (CheckBox)findViewById(R.id.main_soundMuteCheckBox);
-        checkBox_icon = (CheckBox)findViewById(R.id.main_iconCheckBox);
-        button_apply = (Button)findViewById(R.id.main_apply);
+        checkBox_musicPlay = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_musicPlayCheckBox);
+        checkBox_soundUp = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_soundUpCheckBox);
+        checkBox_soundDown = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_soundDownCheckBox);
+        checkBox_soundMute = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_soundMuteCheckBox);
+        checkBox_icon = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_iconCheckBox);
+        button_apply = (Button)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_apply);
     }
 
     void setCheckBox() {
