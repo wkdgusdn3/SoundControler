@@ -9,9 +9,46 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/main_operationLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/main_operation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="기능" />
+
+        <CheckBox
+            android:id="@+id/main_operationCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_iconLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_operationLayout"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/main_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이콘 보이기" />
+
+        <CheckBox
+            android:id="@+id/main_iconCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/main_musicPlayLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/main_iconLayout"
         android:orientation="horizontal">
 
         <TextView
@@ -83,30 +120,11 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/main_iconLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_soundMuteLayout"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/main_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="아이콘 보이기" />
-
-        <CheckBox
-            android:id="@+id/main_iconCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
     <Button
         android:id="@+id/main_apply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/main_iconLayout"
+        android:layout_below="@id/main_soundMuteLayout"
         android:layout_centerHorizontal="true"
         android:text="적용" />
 

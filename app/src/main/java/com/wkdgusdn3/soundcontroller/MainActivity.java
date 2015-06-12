@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 
 public class MainActivity extends Activity {
 
+    CheckBox checkBox_operation;
     CheckBox checkBox_musicPlay;
     CheckBox checkBox_soundUp;
     CheckBox checkBox_soundDown;
@@ -43,15 +44,19 @@ public class MainActivity extends Activity {
     }
 
     void setView() {
-        checkBox_musicPlay = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_musicPlayCheckBox);
-        checkBox_soundUp = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_soundUpCheckBox);
-        checkBox_soundDown = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_soundDownCheckBox);
-        checkBox_soundMute = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_soundMuteCheckBox);
-        checkBox_icon = (CheckBox)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_iconCheckBox);
-        button_apply = (Button)findViewById(com.wkdgusdn3.soundcontroller.R.id.main_apply);
+        checkBox_operation = (CheckBox)findViewById(R.id.main_operationCheckBox);
+        checkBox_musicPlay = (CheckBox)findViewById(R.id.main_musicPlayCheckBox);
+        checkBox_soundUp = (CheckBox)findViewById(R.id.main_soundUpCheckBox);
+        checkBox_soundDown = (CheckBox)findViewById(R.id.main_soundDownCheckBox);
+        checkBox_soundMute = (CheckBox)findViewById(R.id.main_soundMuteCheckBox);
+        checkBox_icon = (CheckBox)findViewById(R.id.main_iconCheckBox);
+        button_apply = (Button)findViewById(R.id.main_apply);
     }
 
     void setCheckBox() {
+        if(InfoManager.boolean_operation) {
+            checkBox_operation.setChecked(true);
+        }
         if(InfoManager.boolean_musicPlay) {
             checkBox_musicPlay.setChecked(true);
         }
@@ -74,6 +79,7 @@ public class MainActivity extends Activity {
         button_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editor.putBoolean("OPERATION", checkBox_operation.isChecked());
                 editor.putBoolean("MUSICPLAY", checkBox_musicPlay.isChecked());
                 editor.putBoolean("SOUNDUP", checkBox_soundUp.isChecked());
                 editor.putBoolean("SOUNDDOWN", checkBox_soundDown.isChecked());
@@ -92,6 +98,9 @@ public class MainActivity extends Activity {
         Intent soundServiceIntent = new Intent(getApplicationContext(), SoundService.class);
 
         stopService(soundServiceIntent);
-        startService(soundServiceIntent);
+
+        if(InfoManager.boolean_operation) {
+            startService(soundServiceIntent);
+        }
     }
 }
