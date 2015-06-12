@@ -78,7 +78,7 @@ public class SoundService extends Service {
         }
 
         notification.contentView = views;
-        notificationManager.notify(0, notification);
+        notificationManager.notify(3, notification);
     }
 
     @Override

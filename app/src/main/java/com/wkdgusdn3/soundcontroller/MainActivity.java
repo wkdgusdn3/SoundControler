@@ -1,6 +1,8 @@
 package com.wkdgusdn3.soundcontroller;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -97,6 +99,8 @@ public class MainActivity extends Activity {
     void startService() {
         Intent soundServiceIntent = new Intent(getApplicationContext(), SoundService.class);
 
+        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.cancel(3);
         stopService(soundServiceIntent);
 
         if(InfoManager.boolean_operation) {
