@@ -23,6 +23,7 @@ public class SoundService extends Service {
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notification = new Notification(com.wkdgusdn3.soundcontroller.R.drawable.sound_icon, "soundcontroller", System.currentTimeMillis());
+        InfoManager.setData(getApplicationContext());
 
         if (!InfoManager.boolean_icon) {
             notification.priority = Notification.PRIORITY_MIN;

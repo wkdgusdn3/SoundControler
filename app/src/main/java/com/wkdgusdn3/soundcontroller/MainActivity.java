@@ -103,6 +103,8 @@ public class MainActivity extends Activity {
         nm.cancel(3);
         stopService(soundServiceIntent);
 
+        InfoManager.setData(getApplicationContext());
+
         if(InfoManager.boolean_operation) {
             startService(soundServiceIntent);
         }
