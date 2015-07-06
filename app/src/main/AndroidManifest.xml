@@ -19,20 +19,20 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".SoundService" />
+        <service android:name="com.wkdgusdn3.service.SoundService" />
 
         <receiver
-            android:name=".BootReceiver"
+            android:name="com.wkdgusdn3.broadcastreceiver.BootReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".ReceiverSoundUp" />
-        <receiver android:name=".ReceiverSoundDown" />
-        <receiver android:name=".ReceiverSoundMute" />
-        <receiver android:name=".ReceiverMusicPlay" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundUp" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundDown" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundMute" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverMusicPlay" />
 
     </application>
 

@@ -8,31 +8,31 @@
         android:id="@+id/sound_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="12dp" />
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp" />
 
     <ImageView
         android:id="@+id/music_play"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_centerVertical="true"
         android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
         android:layout_toLeftOf="@+id/sound_down" />
 
     <ImageView
         android:id="@+id/sound_down"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_centerVertical="true"
         android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
         android:layout_toLeftOf="@+id/sound_up" />
 
     <ImageView
         android:id="@+id/sound_up"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_centerVertical="true"
         android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
         android:layout_toLeftOf="@+id/sound_mute" />
 
     <ImageView
@@ -40,7 +40,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="12dp" />
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp" />
 
 </RelativeLayout>

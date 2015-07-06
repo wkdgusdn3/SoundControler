@@ -1,4 +1,4 @@
-package com.wkdgusdn3.soundcontroller;
+package com.wkdgusdn3.manager;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.wkdgusdn3.manager.InfoManager;
+import com.wkdgusdn3.service.SoundService;
+
 public class MainActivity extends Activity {
 
     CheckBox checkBox_operation;

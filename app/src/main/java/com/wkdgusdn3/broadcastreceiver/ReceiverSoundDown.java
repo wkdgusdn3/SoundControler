@@ -1,10 +1,9 @@
-package com.wkdgusdn3.soundcontroller;
+package com.wkdgusdn3.broadcastreceiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
-import android.util.Log;
 
 public class ReceiverSoundDown extends BroadcastReceiver {
     @Override
