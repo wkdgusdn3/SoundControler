@@ -12,31 +12,31 @@
         android:layout_marginTop="12dp" />
 
     <ImageView
-        android:id="@+id/music_play"
+        android:id="@+id/function1"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="12dp"
         android:layout_marginTop="12dp"
-        android:layout_toLeftOf="@+id/sound_down" />
+        android:layout_toLeftOf="@+id/function2" />
 
     <ImageView
-        android:id="@+id/sound_down"
+        android:id="@+id/function2"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="12dp"
         android:layout_marginTop="12dp"
-        android:layout_toLeftOf="@+id/sound_up" />
+        android:layout_toLeftOf="@+id/function3" />
 
     <ImageView
-        android:id="@+id/sound_up"
+        android:id="@+id/function3"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="12dp"
         android:layout_marginTop="12dp"
-        android:layout_toLeftOf="@+id/sound_mute" />
+        android:layout_toLeftOf="@+id/function4" />
 
     <ImageView
-        android:id="@+id/sound_mute"
+        android:id="@+id/function4"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"

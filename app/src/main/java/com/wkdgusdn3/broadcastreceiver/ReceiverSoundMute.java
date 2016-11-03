@@ -10,7 +10,6 @@ public class ReceiverSoundMute extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
-
         for(int i=0; i<15; i++) {
             audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
                     AudioManager.ADJUST_LOWER,

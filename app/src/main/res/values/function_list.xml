@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="functionList">
+        <item name="music_play">음악 재생</item>
+        <item name="sound_up">볼륨 올리기</item>
+        <item name="sound_down">볼륨 줄이기</item>
+        <item name="sound_mute">음소거</item>
+        <item name="turn_off">기능 끄기</item>
+    </string-array>
+</resources>

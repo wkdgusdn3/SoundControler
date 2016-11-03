@@ -12,6 +12,7 @@
         android:id="@+id/main_operationLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/main_operation"
             android:layout_width="wrap_content"
@@ -44,87 +45,103 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/main_musicPlayLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <View
+        android:id="@+id/main_horizontalLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_below="@+id/main_iconLayout"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/main_musicPlay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="음악 재생" />
-
-        <CheckBox
-            android:id="@+id/main_musicPlayCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:background="#BDBDBD" />
 
     <LinearLayout
-        android:id="@+id/main_soundDownLayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/main_functionLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/main_musicPlayLayout"
-        android:orientation="horizontal">
+        android:layout_below="@+id/main_horizontalLine"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/main_soundDown"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="볼륨 줄이기" />
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/main_soundDownCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기능1" />
 
-    <LinearLayout
-        android:id="@+id/main_soundUpLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_soundDownLayout"
-        android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/main_function1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/functionList"></Spinner>
 
-        <TextView
-            android:id="@+id/main_soundUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="볼륨 올리기" />
+        </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/main_soundUpCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/main_soundMuteLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_soundUpLayout"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/main_soundMute"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="음소거" />
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/main_soundMuteCheckBox"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기능2" />
+
+            <Spinner
+                android:id="@+id/main_function2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/functionList"></Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기능3" />
+
+            <Spinner
+                android:id="@+id/main_function3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/functionList"></Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기능4" />
+
+            <Spinner
+                android:id="@+id/main_function4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/functionList"></Spinner>
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <Button
         android:id="@+id/main_apply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/main_soundMuteLayout"
+        android:layout_below="@+id/main_functionLayout"
         android:layout_centerHorizontal="true"
         android:text="적용" />
 
