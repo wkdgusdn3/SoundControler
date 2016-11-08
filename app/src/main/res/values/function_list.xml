@@ -4,7 +4,12 @@
         <item name="music_play">음악 재생</item>
         <item name="sound_up">볼륨 올리기</item>
         <item name="sound_down">볼륨 줄이기</item>
-        <item name="sound_mute">음소거</item>
+        <item name="sound_0per">음소거</item>
+        <item name="sound_20per">볼륨 20%</item>
+        <item name="sound_40per">볼륨 40%</item>
+        <item name="sound_60per">볼륨 60%</item>
+        <item name="sound_80per">볼륨 80%</item>
+        <item name="sound_100per">볼륨 100%</item>
         <item name="turn_off">기능 끄기</item>
     </string-array>
 </resources>

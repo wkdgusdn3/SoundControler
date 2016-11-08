@@ -13,8 +13,13 @@ import android.widget.RemoteViews;
 
 import com.wkdgusdn3.broadcastreceiver.ReceiverClear;
 import com.wkdgusdn3.broadcastreceiver.ReceiverMusicPlay;
+import com.wkdgusdn3.broadcastreceiver.ReceiverSound0Per;
+import com.wkdgusdn3.broadcastreceiver.ReceiverSound100Per;
+import com.wkdgusdn3.broadcastreceiver.ReceiverSound20Per;
+import com.wkdgusdn3.broadcastreceiver.ReceiverSound40Per;
+import com.wkdgusdn3.broadcastreceiver.ReceiverSound60Per;
+import com.wkdgusdn3.broadcastreceiver.ReceiverSound80Per;
 import com.wkdgusdn3.broadcastreceiver.ReceiverSoundDown;
-import com.wkdgusdn3.broadcastreceiver.ReceiverSoundMute;
 import com.wkdgusdn3.broadcastreceiver.ReceiverSoundUp;
 import com.wkdgusdn3.manager.InfoManager;
 import com.wkdgusdn3.soundcontroller.R;
@@ -64,7 +69,25 @@ public class SoundService extends Service {
                     setSoundDown(views, functionId[i]);
                     break;
                 case 3:
-                    setSoundMute(views, functionId[i]);
+                    setSound0Per(views, functionId[i]);
+                    break;
+                case 4:
+                    setSound20Per(views, functionId[i]);
+                    break;
+                case 5:
+                    setSound40Per(views, functionId[i]);
+                    break;
+                case 6:
+                    setSound60Per(views, functionId[i]);
+                    break;
+                case 7:
+                    setSound80Per(views, functionId[i]);
+                    break;
+                case 8:
+                    setSound100Per(views, functionId[i]);
+                    break;
+                case 9:
+                    setClear(views, functionId[i]);
                     break;
             }
         }
@@ -103,9 +126,25 @@ public class SoundService extends Service {
                     setSoundDown(views, functionId[i]);
                     break;
                 case 3:
-                    setSoundMute(views, functionId[i]);
+                    setSound0Per(views, functionId[i]);
                     break;
                 case 4:
+                    setSound20Per(views, functionId[i]);
+                    break;
+                case 5:
+                    setSound40Per(views, functionId[i]);
+                    break;
+                case 6:
+                    setSound60Per(views, functionId[i]);
+                    break;
+                case 7:
+                    setSound80Per(views, functionId[i]);
+                    break;
+                case 8:
+                    setSound100Per(views, functionId[i]);
+                    break;
+                case 9:
+                    setClear(views, functionId[i]);
                     break;
             }
         }
@@ -135,10 +174,45 @@ public class SoundService extends Service {
         views.setOnClickPendingIntent(id, pedingIntent);
     }
 
-    void setSoundMute(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverSoundMute.class);
+    void setSound0Per(RemoteViews views, int id) {
+        Intent intent = new Intent(getApplicationContext(), ReceiverSound0Per.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.sound_mute);
+        views.setImageViewResource(id, R.drawable.sound_0per);
+        views.setOnClickPendingIntent(id, pedingIntent);
+    }
+
+    void setSound20Per(RemoteViews views, int id) {
+        Intent intent = new Intent(getApplicationContext(), ReceiverSound20Per.class);
+        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        views.setImageViewResource(id, R.drawable.sound_20per);
+        views.setOnClickPendingIntent(id, pedingIntent);
+    }
+
+    void setSound40Per(RemoteViews views, int id) {
+        Intent intent = new Intent(getApplicationContext(), ReceiverSound40Per.class);
+        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        views.setImageViewResource(id, R.drawable.sound_40per);
+        views.setOnClickPendingIntent(id, pedingIntent);
+    }
+
+    void setSound60Per(RemoteViews views, int id) {
+        Intent intent = new Intent(getApplicationContext(), ReceiverSound60Per.class);
+        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        views.setImageViewResource(id, R.drawable.sound_60per);
+        views.setOnClickPendingIntent(id, pedingIntent);
+    }
+
+    void setSound80Per(RemoteViews views, int id) {
+        Intent intent = new Intent(getApplicationContext(), ReceiverSound80Per.class);
+        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        views.setImageViewResource(id, R.drawable.sound_80per);
+        views.setOnClickPendingIntent(id, pedingIntent);
+    }
+
+    void setSound100Per(RemoteViews views, int id) {
+        Intent intent = new Intent(getApplicationContext(), ReceiverSound100Per.class);
+        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        views.setImageViewResource(id, R.drawable.sound_100per);
         views.setOnClickPendingIntent(id, pedingIntent);
     }
 

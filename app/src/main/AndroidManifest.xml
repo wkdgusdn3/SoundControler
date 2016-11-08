@@ -29,14 +29,20 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundUp" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundDown" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundMute" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverMusicPlay" >
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverMusicPlay">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundUp" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundDown" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound0Per" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound20Per" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound40Per" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound60Per" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound80Per" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound100Per" />
+
 
     </application>
 
