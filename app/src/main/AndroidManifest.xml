@@ -36,14 +36,22 @@
         </receiver>
         <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundUp" />
         <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundDown" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound0Per" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound20Per" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound40Per" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound60Per" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound80Per" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSound100Per" />
-
-
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound0" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound1" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound2" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound3" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound4" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound5" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound6" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound7" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound8" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound9" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound10" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound11" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound12" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound13" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound14" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound15" />
     </application>
 
 </manifest>

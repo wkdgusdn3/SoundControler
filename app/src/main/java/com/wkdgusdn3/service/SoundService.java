@@ -13,12 +13,6 @@ import android.widget.RemoteViews;
 
 import com.wkdgusdn3.broadcastreceiver.ReceiverClear;
 import com.wkdgusdn3.broadcastreceiver.ReceiverMusicPlay;
-import com.wkdgusdn3.broadcastreceiver.ReceiverSound0Per;
-import com.wkdgusdn3.broadcastreceiver.ReceiverSound100Per;
-import com.wkdgusdn3.broadcastreceiver.ReceiverSound20Per;
-import com.wkdgusdn3.broadcastreceiver.ReceiverSound40Per;
-import com.wkdgusdn3.broadcastreceiver.ReceiverSound60Per;
-import com.wkdgusdn3.broadcastreceiver.ReceiverSound80Per;
 import com.wkdgusdn3.broadcastreceiver.ReceiverSoundDown;
 import com.wkdgusdn3.broadcastreceiver.ReceiverSoundUp;
 import com.wkdgusdn3.manager.InfoManager;
@@ -60,34 +54,19 @@ public class SoundService extends Service {
         for (int i = 0; i < 4; i++) {
             switch (InfoManager.functions[i]) {
                 case 0:
-                    setMusicPlay(views, functionId[i]);
+                    setClear(views, functionId[i]);
                     break;
                 case 1:
-                    setSoundUp(views, functionId[i]);
+                    setMusicPlay(views, functionId[i]);
                     break;
                 case 2:
-                    setSoundDown(views, functionId[i]);
+                    setSoundUp(views, functionId[i]);
                     break;
                 case 3:
-                    setSound0Per(views, functionId[i]);
+                    setSoundDown(views, functionId[i]);
                     break;
-                case 4:
-                    setSound20Per(views, functionId[i]);
-                    break;
-                case 5:
-                    setSound40Per(views, functionId[i]);
-                    break;
-                case 6:
-                    setSound60Per(views, functionId[i]);
-                    break;
-                case 7:
-                    setSound80Per(views, functionId[i]);
-                    break;
-                case 8:
-                    setSound100Per(views, functionId[i]);
-                    break;
-                case 9:
-                    setClear(views, functionId[i]);
+                default:
+                    setSound(views, functionId[i], InfoManager.functions[i] - 4);
                     break;
             }
         }
@@ -117,40 +96,33 @@ public class SoundService extends Service {
         for (int i = 0; i < 4; i++) {
             switch (InfoManager.functions[i]) {
                 case 0:
-                    setMusicPlay(views, functionId[i]);
-                    break;
-                case 1:
-                    setSoundUp(views, functionId[i]);
-                    break;
-                case 2:
-                    setSoundDown(views, functionId[i]);
-                    break;
-                case 3:
-                    setSound0Per(views, functionId[i]);
-                    break;
-                case 4:
-                    setSound20Per(views, functionId[i]);
-                    break;
-                case 5:
-                    setSound40Per(views, functionId[i]);
-                    break;
-                case 6:
-                    setSound60Per(views, functionId[i]);
-                    break;
-                case 7:
-                    setSound80Per(views, functionId[i]);
-                    break;
-                case 8:
-                    setSound100Per(views, functionId[i]);
-                    break;
-                case 9:
                     setClear(views, functionId[i]);
                     break;
+                case 1:
+                    setMusicPlay(views, functionId[i]);
+                    break;
+                case 2:
+                    setSoundUp(views, functionId[i]);
+                    break;
+                case 3:
+                    setSoundDown(views, functionId[i]);
+                    break;
+                default:
+                    setSound(views, functionId[i], InfoManager.functions[i] - 4);
+                    break;
+
             }
         }
 
         notification.contentView = views;
         notificationManager.notify(3, notification);
+    }
+
+    void setClear(RemoteViews views, int id) {
+        Intent intent_clear = new Intent(getApplicationContext(), ReceiverClear.class);
+        PendingIntent pendingIntent_clear = PendingIntent.getBroadcast(context, 0, intent_clear, 0);
+        views.setImageViewResource(id, R.drawable.clear);
+        views.setOnClickPendingIntent(id, pendingIntent_clear);
     }
 
     void setMusicPlay(RemoteViews views, int id) {
@@ -174,53 +146,16 @@ public class SoundService extends Service {
         views.setOnClickPendingIntent(id, pedingIntent);
     }
 
-    void setSound0Per(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverSound0Per.class);
-        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.sound_0per);
-        views.setOnClickPendingIntent(id, pedingIntent);
-    }
-
-    void setSound20Per(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverSound20Per.class);
-        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.sound_20per);
-        views.setOnClickPendingIntent(id, pedingIntent);
-    }
-
-    void setSound40Per(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverSound40Per.class);
-        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.sound_40per);
-        views.setOnClickPendingIntent(id, pedingIntent);
-    }
-
-    void setSound60Per(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverSound60Per.class);
-        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.sound_60per);
-        views.setOnClickPendingIntent(id, pedingIntent);
-    }
-
-    void setSound80Per(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverSound80Per.class);
-        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.sound_80per);
-        views.setOnClickPendingIntent(id, pedingIntent);
-    }
-
-    void setSound100Per(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverSound100Per.class);
-        PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.sound_100per);
-        views.setOnClickPendingIntent(id, pedingIntent);
-    }
-
-    void setClear(RemoteViews views, int id) {
-        Intent intent_clear = new Intent(getApplicationContext(), ReceiverClear.class);
-        PendingIntent pendingIntent_clear = PendingIntent.getBroadcast(context, 0, intent_clear, 0);
-        views.setImageViewResource(id, R.drawable.clear);
-        views.setOnClickPendingIntent(id, pendingIntent_clear);
+    void setSound(RemoteViews views, int id, int vol) {
+        try {
+            Intent intent = new Intent(getApplicationContext(), Class.forName("com.wkdgusdn3.broadcastreceiver.ReceiverSetSound" + vol));
+            intent.putExtra("VOL", Integer.toString(vol));
+            final PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+            views.setImageViewResource(id, context.getResources().getIdentifier("sound_vol" + vol, "drawable", "com.wkdgusdn3.soundcontroller"));
+            views.setOnClickPendingIntent(id, pedingIntent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

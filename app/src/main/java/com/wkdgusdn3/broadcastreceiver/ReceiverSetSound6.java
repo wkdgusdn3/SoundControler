@@ -4,15 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
-import android.util.Log;
 
-public class ReceiverSound20Per extends BroadcastReceiver {
+public class ReceiverSetSound6 extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.e("wkdgusdn33", "20percent");
-
-        int targetSound = 3;
+        int targetSound = 6;
 
         AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
 

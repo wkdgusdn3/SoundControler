@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="functionList">
+        <item name="turn_off">기능 끄기</item>
         <item name="music_play">음악 재생</item>
         <item name="sound_up">볼륨 올리기</item>
         <item name="sound_down">볼륨 줄이기</item>
-        <item name="sound_0per">음소거</item>
-        <item name="sound_20per">볼륨 20%</item>
-        <item name="sound_40per">볼륨 40%</item>
-        <item name="sound_60per">볼륨 60%</item>
-        <item name="sound_80per">볼륨 80%</item>
-        <item name="sound_100per">볼륨 100%</item>
-        <item name="turn_off">기능 끄기</item>
+        <item name="sound_0">볼륨 0</item>
+        <item name="sound_1">볼륨 1</item>
+        <item name="sound_2">볼륨 2</item>
+        <item name="sound_3">볼륨 3</item>
+        <item name="sound_4">볼륨 4</item>
+        <item name="sound_5">볼륨 5</item>
+        <item name="sound_6">볼륨 6</item>
+        <item name="sound_7">볼륨 7</item>
+        <item name="sound_8">볼륨 8</item>
+        <item name="sound_9">볼륨 9</item>
+        <item name="sound_10">볼륨 10</item>
+        <item name="sound_11">볼륨 11</item>
+        <item name="sound_12">볼륨 12</item>
+        <item name="sound_13">볼륨 13</item>
+        <item name="sound_14">볼륨 14</item>
+        <item name="sound_15">볼륨 15</item>
     </string-array>
 </resources>

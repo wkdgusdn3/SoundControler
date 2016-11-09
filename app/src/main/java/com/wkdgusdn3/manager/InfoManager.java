@@ -17,7 +17,7 @@ public class InfoManager {
         InfoManager.boolean_icon = sharedPreferences.getBoolean("ICON", true);
 
         for (int i = 0; i < 4; i++) {
-            InfoManager.functions[i] = sharedPreferences.getInt("FUNCTION" + i, i);
+            InfoManager.functions[i] = sharedPreferences.getInt("FUNCTION" + i, i + 1);
         }
     }
 }
