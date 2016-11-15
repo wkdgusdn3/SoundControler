@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 public class InfoManager {
     public static boolean boolean_operation = true;
     public static boolean boolean_icon = true;
+    public static int color;
     public static int[] functions = new int[4];
 
     public static void setData(Context context) {
@@ -15,6 +16,7 @@ public class InfoManager {
 
         InfoManager.boolean_operation = sharedPreferences.getBoolean("OPERATION", true);
         InfoManager.boolean_icon = sharedPreferences.getBoolean("ICON", true);
+        InfoManager.color = sharedPreferences.getInt("COLOR", 0);
 
         for (int i = 0; i < 4; i++) {
             InfoManager.functions[i] = sharedPreferences.getInt("FUNCTION" + i, i + 1);

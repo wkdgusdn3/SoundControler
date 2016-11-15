@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
 
     CheckBox checkBox_operation;
     CheckBox checkBox_icon;
+    Spinner spinner_color;
     Spinner[] spinners_function = new Spinner[4];
     Button button_apply;
 
@@ -48,6 +49,7 @@ public class MainActivity extends Activity {
     void setView() {
         checkBox_operation = (CheckBox) findViewById(R.id.main_operationCheckBox);
         checkBox_icon = (CheckBox) findViewById(R.id.main_iconCheckBox);
+        spinner_color = (Spinner) findViewById(R.id.main_color);
         spinners_function[0] = (Spinner) findViewById(R.id.main_function1);
         spinners_function[1] = (Spinner) findViewById(R.id.main_function2);
         spinners_function[2] = (Spinner) findViewById(R.id.main_function3);
@@ -63,6 +65,8 @@ public class MainActivity extends Activity {
             checkBox_icon.setChecked(true);
         }
 
+        spinner_color.setSelection(InfoManager.color);
+
         for (int i = 0; i < 4; i++) {
             spinners_function[i].setSelection(InfoManager.functions[i]);
         }
@@ -75,6 +79,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 editor.putBoolean("OPERATION", checkBox_operation.isChecked());
                 editor.putBoolean("ICON", checkBox_icon.isChecked());
+                editor.putInt("COLOR", spinner_color.getSelectedItemPosition());
 
                 for (int i = 0; i < 4; i++) {
                     editor.putInt("FUNCTION" + i, spinners_function[i].getSelectedItemPosition());

@@ -45,11 +45,33 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/main_colorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_iconLayout"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="색상" />
+
+        <Spinner
+            android:id="@+id/main_color"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/colorList"></Spinner>
+
+    </LinearLayout>
+
     <View
         android:id="@+id/main_horizontalLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/main_iconLayout"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/main_colorLayout"
         android:background="#BDBDBD" />
 
     <LinearLayout

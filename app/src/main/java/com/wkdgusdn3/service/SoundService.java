@@ -60,10 +60,10 @@ public class SoundService extends Service {
                     setMusicPlay(views, functionId[i]);
                     break;
                 case 2:
-                    setSoundUp(views, functionId[i]);
+                    setSoundDown(views, functionId[i]);
                     break;
                 case 3:
-                    setSoundDown(views, functionId[i]);
+                    setSoundUp(views, functionId[i]);
                     break;
                 default:
                     setSound(views, functionId[i], InfoManager.functions[i] - 4);
@@ -102,10 +102,10 @@ public class SoundService extends Service {
                     setMusicPlay(views, functionId[i]);
                     break;
                 case 2:
-                    setSoundUp(views, functionId[i]);
+                    setSoundDown(views, functionId[i]);
                     break;
                 case 3:
-                    setSoundDown(views, functionId[i]);
+                    setSoundUp(views, functionId[i]);
                     break;
                 default:
                     setSound(views, functionId[i], InfoManager.functions[i] - 4);
@@ -128,21 +128,33 @@ public class SoundService extends Service {
     void setMusicPlay(RemoteViews views, int id) {
         Intent intent = new Intent(getApplicationContext(), ReceiverMusicPlay.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.music_play);
+        if(InfoManager.color == 0) { // 검은색
+            views.setImageViewResource(id, context.getResources().getIdentifier("music_play", "drawable", "com.wkdgusdn3.soundcontroller"));
+        } else { // 흰색
+            views.setImageViewResource(id, context.getResources().getIdentifier("music_play_white", "drawable", "com.wkdgusdn3.soundcontroller"));
+        }
         views.setOnClickPendingIntent(id, pedingIntent);
     }
 
     void setSoundUp(RemoteViews views, int id) {
         Intent intent = new Intent(getApplicationContext(), ReceiverSoundUp.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.sound_up);
+        if(InfoManager.color == 0) { // 검은색
+            views.setImageViewResource(id, context.getResources().getIdentifier("sound_up", "drawable", "com.wkdgusdn3.soundcontroller"));
+        } else { // 흰색
+            views.setImageViewResource(id, context.getResources().getIdentifier("sound_up_white", "drawable", "com.wkdgusdn3.soundcontroller"));
+        }
         views.setOnClickPendingIntent(id, pedingIntent);
     }
 
     void setSoundDown(RemoteViews views, int id) {
         Intent intent = new Intent(getApplicationContext(), ReceiverSoundDown.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        views.setImageViewResource(id, R.drawable.sound_down);
+        if(InfoManager.color == 0) { // 검은색
+            views.setImageViewResource(id, context.getResources().getIdentifier("sound_down", "drawable", "com.wkdgusdn3.soundcontroller"));
+        } else { // 흰색
+            views.setImageViewResource(id, context.getResources().getIdentifier("sound_down_white", "drawable", "com.wkdgusdn3.soundcontroller"));
+        }
         views.setOnClickPendingIntent(id, pedingIntent);
     }
 
@@ -151,7 +163,12 @@ public class SoundService extends Service {
             Intent intent = new Intent(getApplicationContext(), Class.forName("com.wkdgusdn3.broadcastreceiver.ReceiverSetSound" + vol));
             intent.putExtra("VOL", Integer.toString(vol));
             final PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-            views.setImageViewResource(id, context.getResources().getIdentifier("sound_vol" + vol, "drawable", "com.wkdgusdn3.soundcontroller"));
+            if(InfoManager.color == 0) { // 검은색
+                views.setImageViewResource(id, context.getResources().getIdentifier("sound_vol" + vol, "drawable", "com.wkdgusdn3.soundcontroller"));
+            } else { // 흰색
+                views.setImageViewResource(id, context.getResources().getIdentifier("sound_vol" + vol +"_white", "drawable", "com.wkdgusdn3.soundcontroller"));
+            }
+
             views.setOnClickPendingIntent(id, pedingIntent);
         } catch (Exception e) {
             e.printStackTrace();
