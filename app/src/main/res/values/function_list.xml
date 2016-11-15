@@ -3,8 +3,8 @@
     <string-array name="functionList">
         <item name="turn_off">기능 끄기</item>
         <item name="music_play">음악 재생</item>
-        <item name="sound_up">볼륨 올리기</item>
-        <item name="sound_down">볼륨 줄이기</item>
+        <item name="sound_down">볼륨 감소</item>
+        <item name="sound_up">볼륨 증가</item>
         <item name="sound_0">볼륨 0</item>
         <item name="sound_1">볼륨 1</item>
         <item name="sound_2">볼륨 2</item>
