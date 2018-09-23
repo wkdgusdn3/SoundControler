@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="functionList">
-        <item name="turn_off">기능 끄기</item>
-        <item name="music_play">음악 재생</item>
-        <item name="sound_down">볼륨 감소</item>
-        <item name="sound_up">볼륨 증가</item>
-        <item name="sound_0">볼륨 0</item>
-        <item name="sound_1">볼륨 1</item>
-        <item name="sound_2">볼륨 2</item>
-        <item name="sound_3">볼륨 3</item>
-        <item name="sound_4">볼륨 4</item>
-        <item name="sound_5">볼륨 5</item>
-        <item name="sound_6">볼륨 6</item>
-        <item name="sound_7">볼륨 7</item>
-        <item name="sound_8">볼륨 8</item>
-        <item name="sound_9">볼륨 9</item>
-        <item name="sound_10">볼륨 10</item>
-        <item name="sound_11">볼륨 11</item>
-        <item name="sound_12">볼륨 12</item>
-        <item name="sound_13">볼륨 13</item>
-        <item name="sound_14">볼륨 14</item>
-        <item name="sound_15">볼륨 15</item>
+        <item name="turn_off">@string/disable</item>
+        <item name="music_play">@string/music_play</item>
+        <item name="sound_down">@string/volume_down</item>
+        <item name="sound_up">@string/volume_up</item>
+        <item name="sound_0">@string/volume_00</item>
+        <item name="sound_1">@string/volume_01</item>
+        <item name="sound_2">@string/volume_02</item>
+        <item name="sound_3">@string/volume_03</item>
+        <item name="sound_4">@string/volume_04</item>
+        <item name="sound_5">@string/volume_05</item>
+        <item name="sound_6">@string/volume_06</item>
+        <item name="sound_7">@string/volume_07</item>
+        <item name="sound_8">@string/volume_08</item>
+        <item name="sound_9">@string/volume_09</item>
+        <item name="sound_10">@string/volume_10</item>
+        <item name="sound_11">@string/volume_11</item>
+        <item name="sound_12">@string/volume_12</item>
+        <item name="sound_13">@string/volume_13</item>
+        <item name="sound_14">@string/volume_14</item>
+        <item name="sound_15">@string/volume_15</item>
     </string-array>
 </resources>

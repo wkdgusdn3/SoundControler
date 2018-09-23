@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">SoundController</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="application_enable">应用启用</string>
+    <string name="notification_bar_icon">通知栏图标</string>
+    <string name="theme">主题</string>
+    <string name="apply">应用</string>
+
+    <!--theme-->
+    <string name="dark">Dark</string>
+    <string name="white">White</string>
+
+    <!--button-->
+    <string name="button_01">按键 1</string>
+    <string name="button_02">按键 2</string>
+    <string name="button_03">按键 3</string>
+    <string name="button_04">按键 4</string>
+
+    <!--function-->
+    <string name="disable">禁用</string>
+    <string name="music_play">音乐播放</string>
+    <string name="volume_up">卷 Up</string>
+    <string name="volume_down">卷 Down</string>
+    <string name="volume_00">卷 0</string>
+    <string name="volume_01">卷 1</string>
+    <string name="volume_02">卷 2</string>
+    <string name="volume_03">卷 3</string>
+    <string name="volume_04">卷 4</string>
+    <string name="volume_05">卷 5</string>
+    <string name="volume_06">卷 6</string>
+    <string name="volume_07">卷 7</string>
+    <string name="volume_08">卷 8</string>
+    <string name="volume_09">卷 9</string>
+    <string name="volume_10">卷 10</string>
+    <string name="volume_11">卷 11</string>
+    <string name="volume_12">卷 12</string>
+    <string name="volume_13">卷 13</string>
+    <string name="volume_14">卷 14</string>
+    <string name="volume_15">卷 15</string>
+</resources>

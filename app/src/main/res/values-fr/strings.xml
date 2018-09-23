@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">SoundController</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="application_enable">Application Enable</string>
+    <string name="notification_bar_icon">Icône de la barre de notification</string>
+    <string name="theme">Thème</string>
+    <string name="apply">Appliquer</string>
+
+    <!--theme-->
+    <string name="dark">Dark</string>
+    <string name="white">White</string>
+
+    <!--button-->
+    <string name="button_01">Bouton 1</string>
+    <string name="button_02">Bouton 2</string>
+    <string name="button_03">Bouton 3</string>
+    <string name="button_04">Bouton 4</string>
+
+    <!--function-->
+    <string name="disable">Désactiver</string>
+    <string name="music_play">Musique jouer</string>
+    <string name="volume_up">Le volume Up</string>
+    <string name="volume_down">Le volume Down</string>
+    <string name="volume_00">Le volume 0</string>
+    <string name="volume_01">Le volume 1</string>
+    <string name="volume_02">Le volume 2</string>
+    <string name="volume_03">Le volume 3</string>
+    <string name="volume_04">Le volume 4</string>
+    <string name="volume_05">Le volume 5</string>
+    <string name="volume_06">Le volume 6</string>
+    <string name="volume_07">Le volume 7</string>
+    <string name="volume_08">Le volume 8</string>
+    <string name="volume_09">Le volume 9</string>
+    <string name="volume_10">Le volume 10</string>
+    <string name="volume_11">Le volume 11</string>
+    <string name="volume_12">Le volume 12</string>
+    <string name="volume_13">Le volume 13</string>
+    <string name="volume_14">Le volume 14</string>
+    <string name="volume_15">Le volume 15</string>
+</resources>

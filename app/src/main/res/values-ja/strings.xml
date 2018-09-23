@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">SoundController</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="application_enable">アプリケーション有効化</string>
+    <string name="notification_bar_icon">通知バーのアイコン</string>
+    <string name="theme">テーマ</string>
+    <string name="apply">適用</string>
+
+    <!--theme-->
+    <string name="dark">Dark</string>
+    <string name="white">White</string>
+
+    <!--button-->
+    <string name="button_01">ボタン 1</string>
+    <string name="button_02">ボタン 2</string>
+    <string name="button_03">ボタン 3</string>
+    <string name="button_04">ボタン 4</string>
+
+    <!--function-->
+    <string name="disable">無効にする</string>
+    <string name="music_play">ミュージックプレイ</string>
+    <string name="volume_up">ボリューム Up</string>
+    <string name="volume_down">ボリューム Down</string>
+    <string name="volume_00">ボリューム 0</string>
+    <string name="volume_01">ボリューム 1</string>
+    <string name="volume_02">ボリューム 2</string>
+    <string name="volume_03">ボリューム 3</string>
+    <string name="volume_04">ボリューム 4</string>
+    <string name="volume_05">ボリューム 5</string>
+    <string name="volume_06">ボリューム 6</string>
+    <string name="volume_07">ボリューム 7</string>
+    <string name="volume_08">ボリューム 8</string>
+    <string name="volume_09">ボリューム 9</string>
+    <string name="volume_10">ボリューム 10</string>
+    <string name="volume_11">ボリューム 11</string>
+    <string name="volume_12">ボリューム 12</string>
+    <string name="volume_13">ボリューム 13</string>
+    <string name="volume_14">ボリューム 14</string>
+    <string name="volume_15">ボリューム 15</string>
+</resources>
