@@ -41,7 +41,7 @@ public class SoundService extends Service {
         NotificationManager notificationManager;
         Notification notification;
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notification = new Notification(com.wkdgusdn3.soundcontroller.R.drawable.sound_icon, "soundcontroller", System.currentTimeMillis());
+        notification = new Notification(R.drawable.notification_icon, "soundcontroller", System.currentTimeMillis());
 
         if (!InfoManager.boolean_icon) {
             notification.priority = Notification.PRIORITY_MIN;
@@ -49,7 +49,7 @@ public class SoundService extends Service {
         notification.flags = Notification.FLAG_NO_CLEAR;
 
         RemoteViews views = new RemoteViews(this.getPackageName(), com.wkdgusdn3.soundcontroller.R.layout.sound_notification);
-        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, com.wkdgusdn3.soundcontroller.R.drawable.sound_icon);
+        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, com.wkdgusdn3.soundcontroller.R.drawable.notification_icon);
 
         for (int i = 0; i < 4; i++) {
             switch (InfoManager.functions[i]) {
@@ -82,7 +82,7 @@ public class SoundService extends Service {
         Notification.Builder builder = new Notification.Builder(getApplicationContext());
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        builder.setSmallIcon(R.drawable.sound_icon);
+        builder.setSmallIcon(R.drawable.notification_icon);
         builder.setTicker("SoundController");
         if (!InfoManager.boolean_icon) {
             builder.setPriority(Notification.PRIORITY_MIN);
@@ -91,7 +91,7 @@ public class SoundService extends Service {
         notification = builder.build();
 
         RemoteViews views = new RemoteViews(this.getPackageName(), com.wkdgusdn3.soundcontroller.R.layout.sound_notification);
-        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, com.wkdgusdn3.soundcontroller.R.drawable.sound_icon);
+        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, com.wkdgusdn3.soundcontroller.R.drawable.notification_icon);
 
         for (int i = 0; i < 4; i++) {
             switch (InfoManager.functions[i]) {
