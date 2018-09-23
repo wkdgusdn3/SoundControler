@@ -49,7 +49,7 @@ public class SoundService extends Service {
         notification.flags = Notification.FLAG_NO_CLEAR;
 
         RemoteViews views = new RemoteViews(this.getPackageName(), com.wkdgusdn3.soundcontroller.R.layout.sound_notification);
-        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, com.wkdgusdn3.soundcontroller.R.drawable.notification_icon);
+        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, com.wkdgusdn3.soundcontroller.R.drawable.sound_icon);
 
         for (int i = 0; i < 4; i++) {
             switch (InfoManager.functions[i]) {
@@ -91,7 +91,7 @@ public class SoundService extends Service {
         notification = builder.build();
 
         RemoteViews views = new RemoteViews(this.getPackageName(), com.wkdgusdn3.soundcontroller.R.layout.sound_notification);
-        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, com.wkdgusdn3.soundcontroller.R.drawable.notification_icon);
+        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, com.wkdgusdn3.soundcontroller.R.drawable.sound_icon);
 
         for (int i = 0; i < 4; i++) {
             switch (InfoManager.functions[i]) {
