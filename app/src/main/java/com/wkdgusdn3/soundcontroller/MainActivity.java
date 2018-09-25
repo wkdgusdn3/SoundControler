@@ -13,6 +13,8 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.wkdgusdn3.manager.InfoManager;
+import com.wkdgusdn3.model.SharedPreferenceText;
+import com.wkdgusdn3.model.SoundFunctionType;
 import com.wkdgusdn3.service.SoundService;
 
 public class MainActivity extends Activity {
@@ -58,17 +60,17 @@ public class MainActivity extends Activity {
     }
 
     void initializeView() { // 옵션을 이전에 저장된 상태로 초기화
-        if (InfoManager.boolean_operation) {
+        if (InfoManager.isApplicationEnable) {
             checkBox_operation.setChecked(true);
         }
-        if (InfoManager.boolean_icon) {
+        if (InfoManager.isSeeStatusBarIcon) {
             checkBox_icon.setChecked(true);
         }
 
-        spinner_color.setSelection(InfoManager.color);
+        spinner_color.setSelection(InfoManager.theme);
 
         for (int i = 0; i < 4; i++) {
-            spinners_function[i].setSelection(InfoManager.functions[i]);
+            spinners_function[i].setSelection(InfoManager.buttons[i].getPosition());
         }
     }
 
@@ -77,13 +79,16 @@ public class MainActivity extends Activity {
         button_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor.putBoolean("OPERATION", checkBox_operation.isChecked());
-                editor.putBoolean("ICON", checkBox_icon.isChecked());
-                editor.putInt("COLOR", spinner_color.getSelectedItemPosition());
 
-                for (int i = 0; i < 4; i++) {
-                    editor.putInt("FUNCTION" + i, spinners_function[i].getSelectedItemPosition());
-                }
+                editor.putBoolean(SharedPreferenceText.IS_APPLICATION_ENABLE, checkBox_operation.isChecked());
+                editor.putBoolean(SharedPreferenceText.IS_SEE_STATUS_BAR_ICON, checkBox_icon.isChecked());
+                editor.putInt(SharedPreferenceText.THEME, spinner_color.getSelectedItemPosition());
+
+                editor.putString(SharedPreferenceText.BUTTON_01, SoundFunctionType.getSoundFunction(spinners_function[0].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceText.BUTTON_02, SoundFunctionType.getSoundFunction(spinners_function[1].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceText.BUTTON_03, SoundFunctionType.getSoundFunction(spinners_function[2].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceText.BUTTON_04, SoundFunctionType.getSoundFunction(spinners_function[3].getSelectedItemPosition()).toString());
+
                 editor.commit();
 
                 InfoManager.setData(getApplicationContext());
@@ -102,7 +107,7 @@ public class MainActivity extends Activity {
 
         InfoManager.setData(getApplicationContext());
 
-        if (InfoManager.boolean_operation) {
+        if (InfoManager.isApplicationEnable) {
             startService(soundServiceIntent);
         }
     }

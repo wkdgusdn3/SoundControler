@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="application_enable">Habilitar aplicación</string>
-    <string name="notification_bar_icon">Icono de la barra de notificaciones</string>
+    <string name="status_bar_icon">Icono de barra de estado</string>
     <string name="theme">Tema</string>
     <string name="apply">Aplicar</string>
 

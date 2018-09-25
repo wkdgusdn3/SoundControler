@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="application_enable">应用启用</string>
-    <string name="notification_bar_icon">通知栏图标</string>
+    <string name="status_bar_icon">状态栏图标</string>
     <string name="theme">主题</string>
     <string name="apply">应用</string>
 
