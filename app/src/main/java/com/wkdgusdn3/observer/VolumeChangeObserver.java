@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.widget.RemoteViews;
 
 import com.wkdgusdn3.manager.InfoManager;
+import com.wkdgusdn3.model.ThemeType;
 import com.wkdgusdn3.soundcontroller.R;
 
 
@@ -46,7 +47,7 @@ public class VolumeChangeObserver extends ContentObserver {
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
         // set currentVolume imageView
-        if(InfoManager.theme == 0) { // dark
+        if(InfoManager.theme == ThemeType.DARK) { // dark
             remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), THEME_DARK), "drawable", "com.wkdgusdn3.soundcontroller"));
         } else { // white
             remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), THEME_WHITE), "drawable", "com.wkdgusdn3.soundcontroller"));

@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.wkdgusdn3.soundcontroller.R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         InfoManager.setData(getApplicationContext());
 
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
             statusBarIconEnableCheckBox.setChecked(true);
         }
 
-        themeSpinner.setSelection(InfoManager.theme);
+        themeSpinner.setSelection(InfoManager.theme.getPosition());
 
         for (int i = 0; i < 4; i++) {
             functionSpinners[i].setSelection(InfoManager.buttons[i].getPosition());

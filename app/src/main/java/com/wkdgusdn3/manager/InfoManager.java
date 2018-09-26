@@ -7,13 +7,14 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.wkdgusdn3.model.SoundFunctionType;
+import com.wkdgusdn3.model.ThemeType;
 
 public class InfoManager {
 
     public static boolean isEnableApplication = true;
     public static boolean isEnableStatusBarIcon = true;
     public static boolean isEnableCurrentVolumeIcon = true;
-    public static int theme;
+    public static ThemeType theme;
     public static SoundFunctionType[] buttons = new SoundFunctionType[4];
 
     public static NotificationManager notificationManager;
@@ -27,7 +28,7 @@ public class InfoManager {
         isEnableApplication = sharedPreferences.getBoolean(SharedPreferenceManager.IS_ENABLE_APPLICATION, true);
         isEnableStatusBarIcon = sharedPreferences.getBoolean(SharedPreferenceManager.IS_ENABLE_STATUS_BAR_ICON, true);
         isEnableCurrentVolumeIcon = sharedPreferences.getBoolean(SharedPreferenceManager.IS_ENABLE_CURRENT_VOLUME_ICON, true);
-        theme = sharedPreferences.getInt(SharedPreferenceManager.THEME, 0);
+        theme = ThemeType.valueOf(sharedPreferences.getString(SharedPreferenceManager.THEME, ThemeType.DARK.toString()));
 
         buttons[0] = SoundFunctionType.valueOf(sharedPreferences.getString(SharedPreferenceManager.BUTTON_01, SoundFunctionType.MUSIC_PLAY.toString()));
         buttons[1] = SoundFunctionType.valueOf(sharedPreferences.getString(SharedPreferenceManager.BUTTON_02, SoundFunctionType.VOLUME_UP.toString()));
