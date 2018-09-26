@@ -68,6 +68,9 @@ public class MainActivity extends Activity {
         if (InfoManager.isEnableApplication) {
             applicationEnableCheckBox.setChecked(true);
         }
+        if(InfoManager.isEnableCurrentVolumeIcon) {
+            currentVolumeIconEnableCheckBox.setChecked(true);
+        }
         if (InfoManager.isEnableStatusBarIcon) {
             statusBarIconEnableCheckBox.setChecked(true);
         }
