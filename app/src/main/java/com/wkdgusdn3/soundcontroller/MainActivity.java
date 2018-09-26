@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import com.wkdgusdn3.manager.InfoManager;
 import com.wkdgusdn3.manager.SharedPreferenceManager;
 import com.wkdgusdn3.model.SoundFunctionType;
+import com.wkdgusdn3.model.ThemeType;
 import com.wkdgusdn3.observer.VolumeChangeObserver;
 import com.wkdgusdn3.service.SoundService;
 
@@ -87,7 +88,7 @@ public class MainActivity extends Activity {
                 editor.putBoolean(SharedPreferenceManager.IS_ENABLE_APPLICATION, applicationEnableCheckBox.isChecked());
                 editor.putBoolean(SharedPreferenceManager.IS_ENABLE_STATUS_BAR_ICON, statusBarIconEnableCheckBox.isChecked());
                 editor.putBoolean(SharedPreferenceManager.IS_ENABLE_CURRENT_VOLUME_ICON, currentVolumeIconEnableCheckBox.isChecked());
-                editor.putInt(SharedPreferenceManager.THEME, themeSpinner.getSelectedItemPosition());
+                editor.putString(SharedPreferenceManager.THEME, ThemeType.getThemeType(themeSpinner.getSelectedItemPosition()).toString());
 
                 editor.putString(SharedPreferenceManager.BUTTON_01, SoundFunctionType.getSoundFunction(functionSpinners[0].getSelectedItemPosition()).toString());
                 editor.putString(SharedPreferenceManager.BUTTON_02, SoundFunctionType.getSoundFunction(functionSpinners[1].getSelectedItemPosition()).toString());
