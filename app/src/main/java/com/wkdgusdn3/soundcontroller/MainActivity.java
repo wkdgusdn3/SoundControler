@@ -52,14 +52,14 @@ public class MainActivity extends Activity {
     }
 
     void setView() {
-        applicationEnableCheckBox = (CheckBox) findViewById(R.id.main_operationCheckBox);
-        statusBarIconEnableCheckBox = (CheckBox) findViewById(R.id.main_iconCheckBox);
+        applicationEnableCheckBox = (CheckBox) findViewById(R.id.main_applicationEnableCheckBox);
+        statusBarIconEnableCheckBox = (CheckBox) findViewById(R.id.main_statusBarIconEnableCheckBox);
         currentVolumeIconEnableCheckBox = (CheckBox) findViewById(R.id.main_currentVolumeCheckBox);
-        themeSpinner = (Spinner) findViewById(R.id.main_color);
-        functionSpinners[0] = (Spinner) findViewById(R.id.main_function1);
-        functionSpinners[1] = (Spinner) findViewById(R.id.main_function2);
-        functionSpinners[2] = (Spinner) findViewById(R.id.main_function3);
-        functionSpinners[3] = (Spinner) findViewById(R.id.main_function4);
+        themeSpinner = (Spinner) findViewById(R.id.main_theme);
+        functionSpinners[0] = (Spinner) findViewById(R.id.main_button1);
+        functionSpinners[1] = (Spinner) findViewById(R.id.main_button2);
+        functionSpinners[2] = (Spinner) findViewById(R.id.main_button3);
+        functionSpinners[3] = (Spinner) findViewById(R.id.main_button4);
         applyButton = (Button) findViewById(R.id.main_apply);
     }
 
