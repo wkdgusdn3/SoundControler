@@ -10,8 +10,9 @@ import com.wkdgusdn3.model.SoundFunctionType;
 
 public class InfoManager {
 
-    public static boolean isApplicationEnable = true;
-    public static boolean isSeeStatusBarIcon = true;
+    public static boolean isEnableApplication = true;
+    public static boolean isEnableStatusBarIcon = true;
+    public static boolean isEnableCurrentVolumeIcon = true;
     public static int theme;
     public static SoundFunctionType[] buttons = new SoundFunctionType[4];
 
@@ -23,8 +24,9 @@ public class InfoManager {
         SharedPreferences sharedPreferences;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        isApplicationEnable = sharedPreferences.getBoolean(SharedPreferenceManager.IS_APPLICATION_ENABLE, true);
-        isSeeStatusBarIcon = sharedPreferences.getBoolean(SharedPreferenceManager.IS_SEE_STATUS_BAR_ICON, true);
+        isEnableApplication = sharedPreferences.getBoolean(SharedPreferenceManager.IS_ENABLE_APPLICATION, true);
+        isEnableStatusBarIcon = sharedPreferences.getBoolean(SharedPreferenceManager.IS_ENABLE_STATUS_BAR_ICON, true);
+        isEnableCurrentVolumeIcon = sharedPreferences.getBoolean(SharedPreferenceManager.IS_ENABLE_CURRENT_VOLUME_ICON, true);
         theme = sharedPreferences.getInt(SharedPreferenceManager.THEME, 0);
 
         buttons[0] = SoundFunctionType.valueOf(sharedPreferences.getString(SharedPreferenceManager.BUTTON_01, SoundFunctionType.MUSIC_PLAY.toString()));

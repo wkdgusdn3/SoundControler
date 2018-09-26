@@ -4,16 +4,13 @@ import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.content.Intent;
 import android.database.ContentObserver;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Handler;
-import android.service.notification.StatusBarNotification;
 import android.widget.RemoteViews;
 
 import com.wkdgusdn3.manager.InfoManager;
-import com.wkdgusdn3.service.SoundService;
 import com.wkdgusdn3.soundcontroller.R;
 
 

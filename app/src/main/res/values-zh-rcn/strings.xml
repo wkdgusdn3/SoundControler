@@ -4,6 +4,7 @@
 
     <string name="application_enable">应用启用</string>
     <string name="status_bar_icon">状态栏图标</string>
+    <string name="current_volume_icon_enable">当前音量图标启用</string>
     <string name="theme">主题</string>
     <string name="apply">应用</string>
 

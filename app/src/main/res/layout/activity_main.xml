@@ -27,11 +27,29 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/main_currentVolumeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_operationLayout">
+
+        <TextView
+            android:id="@+id/main_currentVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_volume_icon_enable" />
+
+        <CheckBox
+            android:id="@+id/main_currentVolumeCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/main_iconLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/main_operationLayout"
-        android:orientation="horizontal">
+        android:layout_below="@id/main_currentVolumeLayout">
 
         <TextView
             android:id="@+id/main_icon"
@@ -49,8 +67,7 @@
         android:id="@+id/main_colorLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/main_iconLayout"
-        android:orientation="horizontal">
+        android:layout_below="@id/main_iconLayout">
 
         <TextView
             android:layout_width="wrap_content"

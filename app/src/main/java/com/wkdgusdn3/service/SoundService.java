@@ -48,7 +48,7 @@ public class SoundService extends Service {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = new Notification(R.drawable.notification_icon, "soundcontroller", System.currentTimeMillis());
 
-        if (!InfoManager.isSeeStatusBarIcon) {
+        if (!InfoManager.isEnableStatusBarIcon) {
             notification.priority = Notification.PRIORITY_MIN;
         }
         notification.flags = Notification.FLAG_NO_CLEAR;
@@ -92,7 +92,7 @@ public class SoundService extends Service {
 
         builder.setSmallIcon(R.drawable.notification_icon);
         builder.setTicker("SoundController");
-        if (!InfoManager.isSeeStatusBarIcon) {
+        if (!InfoManager.isEnableStatusBarIcon) {
             builder.setPriority(Notification.PRIORITY_MIN);
         }
         builder.setOngoing(true);
@@ -130,6 +130,12 @@ public class SoundService extends Service {
     }
 
     void setCurrentVolume(RemoteViews remoteViews) {
+
+        // currentVolume disable
+        if (!InfoManager.isEnableCurrentVolumeIcon) {
+            setDisable(remoteViews, currentVolumeId);
+            return;
+        }
 
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);

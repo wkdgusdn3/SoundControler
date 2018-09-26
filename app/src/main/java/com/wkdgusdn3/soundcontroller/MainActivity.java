@@ -21,11 +21,12 @@ import com.wkdgusdn3.service.SoundService;
 
 public class MainActivity extends Activity {
 
-    private CheckBox checkBox_operation;
-    private CheckBox checkBox_icon;
-    private Spinner spinner_color;
-    private Spinner[] spinners_function = new Spinner[4];
-    private Button button_apply;
+    private CheckBox applicationEnableCheckBox;
+    private CheckBox statusBarIconEnableCheckBox;
+    private CheckBox currentVolumeIconEnableCheckBox;
+    private Spinner themeSpinner;
+    private Spinner[] functionSpinners = new Spinner[4];
+    private Button applyButton;
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -51,56 +52,68 @@ public class MainActivity extends Activity {
     }
 
     void setView() {
-        checkBox_operation = (CheckBox) findViewById(R.id.main_operationCheckBox);
-        checkBox_icon = (CheckBox) findViewById(R.id.main_iconCheckBox);
-        spinner_color = (Spinner) findViewById(R.id.main_color);
-        spinners_function[0] = (Spinner) findViewById(R.id.main_function1);
-        spinners_function[1] = (Spinner) findViewById(R.id.main_function2);
-        spinners_function[2] = (Spinner) findViewById(R.id.main_function3);
-        spinners_function[3] = (Spinner) findViewById(R.id.main_function4);
-        button_apply = (Button) findViewById(R.id.main_apply);
+        applicationEnableCheckBox = (CheckBox) findViewById(R.id.main_operationCheckBox);
+        statusBarIconEnableCheckBox = (CheckBox) findViewById(R.id.main_iconCheckBox);
+        currentVolumeIconEnableCheckBox = (CheckBox) findViewById(R.id.main_currentVolumeCheckBox);
+        themeSpinner = (Spinner) findViewById(R.id.main_color);
+        functionSpinners[0] = (Spinner) findViewById(R.id.main_function1);
+        functionSpinners[1] = (Spinner) findViewById(R.id.main_function2);
+        functionSpinners[2] = (Spinner) findViewById(R.id.main_function3);
+        functionSpinners[3] = (Spinner) findViewById(R.id.main_function4);
+        applyButton = (Button) findViewById(R.id.main_apply);
     }
 
     void initializeView() { // 옵션을 이전에 저장된 상태로 초기화
-        if (InfoManager.isApplicationEnable) {
-            checkBox_operation.setChecked(true);
+        if (InfoManager.isEnableApplication) {
+            applicationEnableCheckBox.setChecked(true);
         }
-        if (InfoManager.isSeeStatusBarIcon) {
-            checkBox_icon.setChecked(true);
+        if (InfoManager.isEnableStatusBarIcon) {
+            statusBarIconEnableCheckBox.setChecked(true);
         }
 
-        spinner_color.setSelection(InfoManager.theme);
+        themeSpinner.setSelection(InfoManager.theme);
 
         for (int i = 0; i < 4; i++) {
-            spinners_function[i].setSelection(InfoManager.buttons[i].getPosition());
+            functionSpinners[i].setSelection(InfoManager.buttons[i].getPosition());
         }
     }
 
     void setClickListener() {
 
-        button_apply.setOnClickListener(new View.OnClickListener() {
+        applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                editor.putBoolean(SharedPreferenceManager.IS_APPLICATION_ENABLE, checkBox_operation.isChecked());
-                editor.putBoolean(SharedPreferenceManager.IS_SEE_STATUS_BAR_ICON, checkBox_icon.isChecked());
-                editor.putInt(SharedPreferenceManager.THEME, spinner_color.getSelectedItemPosition());
+                editor.putBoolean(SharedPreferenceManager.IS_ENABLE_APPLICATION, applicationEnableCheckBox.isChecked());
+                editor.putBoolean(SharedPreferenceManager.IS_ENABLE_STATUS_BAR_ICON, statusBarIconEnableCheckBox.isChecked());
+                editor.putBoolean(SharedPreferenceManager.IS_ENABLE_CURRENT_VOLUME_ICON, currentVolumeIconEnableCheckBox.isChecked());
+                editor.putInt(SharedPreferenceManager.THEME, themeSpinner.getSelectedItemPosition());
 
-                editor.putString(SharedPreferenceManager.BUTTON_01, SoundFunctionType.getSoundFunction(spinners_function[0].getSelectedItemPosition()).toString());
-                editor.putString(SharedPreferenceManager.BUTTON_02, SoundFunctionType.getSoundFunction(spinners_function[1].getSelectedItemPosition()).toString());
-                editor.putString(SharedPreferenceManager.BUTTON_03, SoundFunctionType.getSoundFunction(spinners_function[2].getSelectedItemPosition()).toString());
-                editor.putString(SharedPreferenceManager.BUTTON_04, SoundFunctionType.getSoundFunction(spinners_function[3].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_01, SoundFunctionType.getSoundFunction(functionSpinners[0].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_02, SoundFunctionType.getSoundFunction(functionSpinners[1].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_03, SoundFunctionType.getSoundFunction(functionSpinners[2].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_04, SoundFunctionType.getSoundFunction(functionSpinners[3].getSelectedItemPosition()).toString());
 
                 editor.commit();
-
                 InfoManager.setData(getApplicationContext());
 
-                startService();
+                if(InfoManager.isEnableCurrentVolumeIcon) {
 
-                VolumeChangeObserver volumeChangeObserver = new VolumeChangeObserver(getApplicationContext(), new Handler());
-                getApplicationContext()
-                    .getContentResolver()
-                    .registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeChangeObserver );
+                    // volumeChangeObserver 등록
+                    VolumeChangeObserver volumeChangeObserver = new VolumeChangeObserver(getApplicationContext(), new Handler());
+                    getApplicationContext()
+                            .getContentResolver()
+                            .registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeChangeObserver );
+                } else {
+
+                    // volumeChangeObserver 제거
+                    VolumeChangeObserver volumeChangeObserver = new VolumeChangeObserver(getApplicationContext(), new Handler());
+                    getApplicationContext()
+                            .getContentResolver()
+                            .unregisterContentObserver(volumeChangeObserver);
+                }
+
+                startService();
             }
         });
     }
@@ -114,7 +127,7 @@ public class MainActivity extends Activity {
 
         InfoManager.setData(getApplicationContext());
 
-        if (InfoManager.isApplicationEnable) {
+        if (InfoManager.isEnableApplication) {
             startService(soundServiceIntent);
         }
     }
