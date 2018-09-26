@@ -19,7 +19,10 @@ import com.wkdgusdn3.soundcontroller.R;
 
 public class VolumeChangeObserver extends ContentObserver {
 
-    private final int currentTextViewId = R.id.currentVolume;
+    private static final String THEME_DARK = "dark";
+    private static final String THEME_WHITE = "white";
+
+    private final int currentVolumeId = R.id.current_volume;
     private Context context;
 
     public VolumeChangeObserver(Context context, Handler handler) {
@@ -45,7 +48,12 @@ public class VolumeChangeObserver extends ContentObserver {
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
-        remoteViews.setTextViewText(currentTextViewId, Integer.toString(currentVolume));
+        // set currentVolume imageView
+        if(InfoManager.theme == 0) { // dark
+            remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), THEME_DARK), "drawable", "com.wkdgusdn3.soundcontroller"));
+        } else { // white
+            remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), THEME_WHITE), "drawable", "com.wkdgusdn3.soundcontroller"));
+        }
 
         notificationManager.notify(3, notification);
     }

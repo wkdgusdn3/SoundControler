@@ -12,6 +12,15 @@
         android:layout_marginTop="12dp" />
 
     <ImageView
+        android:id="@+id/current_volume"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/current_volume_0_dark"
+        android:layout_toRightOf="@+id/sound_icon" />
+
+    <ImageView
         android:id="@+id/function1"
         android:layout_width="40dp"
         android:layout_height="40dp"
