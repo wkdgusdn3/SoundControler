@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
@@ -13,20 +14,21 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.wkdgusdn3.manager.InfoManager;
-import com.wkdgusdn3.model.SharedPreferenceText;
+import com.wkdgusdn3.manager.SharedPreferenceManager;
 import com.wkdgusdn3.model.SoundFunctionType;
+import com.wkdgusdn3.observer.VolumeChangeObserver;
 import com.wkdgusdn3.service.SoundService;
 
 public class MainActivity extends Activity {
 
-    CheckBox checkBox_operation;
-    CheckBox checkBox_icon;
-    Spinner spinner_color;
-    Spinner[] spinners_function = new Spinner[4];
-    Button button_apply;
+    private CheckBox checkBox_operation;
+    private CheckBox checkBox_icon;
+    private Spinner spinner_color;
+    private Spinner[] spinners_function = new Spinner[4];
+    private Button button_apply;
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,20 +82,25 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                editor.putBoolean(SharedPreferenceText.IS_APPLICATION_ENABLE, checkBox_operation.isChecked());
-                editor.putBoolean(SharedPreferenceText.IS_SEE_STATUS_BAR_ICON, checkBox_icon.isChecked());
-                editor.putInt(SharedPreferenceText.THEME, spinner_color.getSelectedItemPosition());
+                editor.putBoolean(SharedPreferenceManager.IS_APPLICATION_ENABLE, checkBox_operation.isChecked());
+                editor.putBoolean(SharedPreferenceManager.IS_SEE_STATUS_BAR_ICON, checkBox_icon.isChecked());
+                editor.putInt(SharedPreferenceManager.THEME, spinner_color.getSelectedItemPosition());
 
-                editor.putString(SharedPreferenceText.BUTTON_01, SoundFunctionType.getSoundFunction(spinners_function[0].getSelectedItemPosition()).toString());
-                editor.putString(SharedPreferenceText.BUTTON_02, SoundFunctionType.getSoundFunction(spinners_function[1].getSelectedItemPosition()).toString());
-                editor.putString(SharedPreferenceText.BUTTON_03, SoundFunctionType.getSoundFunction(spinners_function[2].getSelectedItemPosition()).toString());
-                editor.putString(SharedPreferenceText.BUTTON_04, SoundFunctionType.getSoundFunction(spinners_function[3].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_01, SoundFunctionType.getSoundFunction(spinners_function[0].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_02, SoundFunctionType.getSoundFunction(spinners_function[1].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_03, SoundFunctionType.getSoundFunction(spinners_function[2].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_04, SoundFunctionType.getSoundFunction(spinners_function[3].getSelectedItemPosition()).toString());
 
                 editor.commit();
 
                 InfoManager.setData(getApplicationContext());
 
                 startService();
+
+                VolumeChangeObserver volumeChangeObserver = new VolumeChangeObserver(getApplicationContext(), new Handler());
+                getApplicationContext()
+                    .getContentResolver()
+                    .registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeChangeObserver );
             }
         });
     }

@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.widget.RemoteViews;
@@ -21,8 +22,9 @@ import com.wkdgusdn3.soundcontroller.R;
 
 public class SoundService extends Service {
 
-    Context context;
-    int[] functionId = {R.id.function1, R.id.function2, R.id.function3, R.id.function4};
+    private Context context;
+    private final int currentTextViewId = R.id.currentVolume;
+    private final int[] functionId = {R.id.function1, R.id.function2, R.id.function3, R.id.function4};
 
     @Override
     public void onCreate() {
@@ -39,10 +41,9 @@ public class SoundService extends Service {
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     void notificationIceCreamSandwich() {
-        NotificationManager notificationManager;
-        Notification notification;
-        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notification = new Notification(R.drawable.notification_icon, "soundcontroller", System.currentTimeMillis());
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = new Notification(R.drawable.notification_icon, "soundcontroller", System.currentTimeMillis());
 
         if (!InfoManager.isSeeStatusBarIcon) {
             notification.priority = Notification.PRIORITY_MIN;
@@ -50,7 +51,8 @@ public class SoundService extends Service {
         notification.flags = Notification.FLAG_NO_CLEAR;
 
         RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.sound_notification);
-        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, R.drawable.sound_icon);
+        views.setImageViewResource(R.id.sound_icon, R.drawable.sound_icon);
+        setCurrentVolume(views);
 
         for (int i = 0; i < 4; i++) {
             switch (InfoManager.buttons[i]) {
@@ -74,15 +76,17 @@ public class SoundService extends Service {
 
         notification.contentView = views;
         notificationManager.notify(3, notification);
+
+        setNotificationInfo(notificationManager, notification);
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     void notificationJellyBean() {
-        NotificationManager notificationManager;
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification;
         Notification.Builder builder = new Notification.Builder(getApplicationContext());
 
-        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         builder.setSmallIcon(R.drawable.notification_icon);
         builder.setTicker("SoundController");
         if (!InfoManager.isSeeStatusBarIcon) {
@@ -91,8 +95,9 @@ public class SoundService extends Service {
         builder.setOngoing(true);
         notification = builder.build();
 
-        RemoteViews views = new RemoteViews(this.getPackageName(), com.wkdgusdn3.soundcontroller.R.layout.sound_notification);
-        views.setImageViewResource(com.wkdgusdn3.soundcontroller.R.id.sound_icon, com.wkdgusdn3.soundcontroller.R.drawable.sound_icon);
+        RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.sound_notification);
+        views.setImageViewResource(R.id.sound_icon, R.drawable.sound_icon);
+        setCurrentVolume(views);
 
         for (int i = 0; i < 4; i++) {
             switch (InfoManager.buttons[i]) {
@@ -117,6 +122,16 @@ public class SoundService extends Service {
 
         notification.contentView = views;
         notificationManager.notify(3, notification);
+
+        setNotificationInfo(notificationManager, notification);
+    }
+
+    void setCurrentVolume(RemoteViews views) {
+
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+
+        views.setTextViewText(currentTextViewId, Integer.toString(currentVolume));
     }
 
     void setDisable(RemoteViews views, int id) {
@@ -174,6 +189,12 @@ public class SoundService extends Service {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    void setNotificationInfo(NotificationManager notificationManager, Notification notification) {
+
+        InfoManager.notificationManager = notificationManager;
+        InfoManager.notification = notification;
     }
 
     @Override

@@ -1,6 +1,6 @@
-package com.wkdgusdn3.model;
+package com.wkdgusdn3.manager;
 
-public class SharedPreferenceText {
+public class SharedPreferenceManager {
 
     public static final String IS_APPLICATION_ENABLE = "IS_APPLICATION_ENABLE";
     public static final String IS_SEE_STATUS_BAR_ICON = "IS_SEE_STATUS_BAR_ICON";
