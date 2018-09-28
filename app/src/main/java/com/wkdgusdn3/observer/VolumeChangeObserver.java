@@ -17,9 +17,6 @@ import com.wkdgusdn3.soundcontroller.R;
 
 public class VolumeChangeObserver extends ContentObserver {
 
-    private static final String THEME_DARK = "dark";
-    private static final String THEME_WHITE = "white";
-
     private final int currentVolumeId = R.id.current_volume;
     private Context context;
 
@@ -48,9 +45,9 @@ public class VolumeChangeObserver extends ContentObserver {
 
         // set currentVolume imageView
         if(InfoManager.theme == ThemeType.DARK) { // dark
-            remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), THEME_DARK), "drawable", "com.wkdgusdn3.soundcontroller"));
+            remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), ThemeType.DARK.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller"));
         } else { // white
-            remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), THEME_WHITE), "drawable", "com.wkdgusdn3.soundcontroller"));
+            remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), ThemeType.WHITE.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller"));
         }
 
         notificationManager.notify(3, notification);

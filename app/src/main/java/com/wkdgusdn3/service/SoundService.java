@@ -27,9 +27,6 @@ public class SoundService extends Service {
     private final int currentVolumeId = R.id.current_volume;
     private final int[] functionId = {R.id.function1, R.id.function2, R.id.function3, R.id.function4};
 
-    private static final String THEME_DARK = "dark";
-    private static final String THEME_WHITE = "white";
-
     @Override
     public void onCreate() {
 
@@ -142,16 +139,22 @@ public class SoundService extends Service {
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
         if(InfoManager.theme == ThemeType.DARK) { // dark
-            remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), THEME_DARK), "drawable", "com.wkdgusdn3.soundcontroller"));
+            remoteViews.setImageViewResource(
+                currentVolumeId,
+                context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), ThemeType.DARK.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+            );
         } else { // white
-            remoteViews.setImageViewResource(currentVolumeId, context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), THEME_WHITE), "drawable", "com.wkdgusdn3.soundcontroller"));
+            remoteViews.setImageViewResource(
+                currentVolumeId,
+                context.getResources().getIdentifier(String.format("current_volume_%s_%s", Long.toString(currentVolume), ThemeType.WHITE.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+            );
         }
     }
 
     void setDisable(RemoteViews views, int id) {
         Intent intent_clear = new Intent(getApplicationContext(), ReceiverClear.class);
         PendingIntent pendingIntent_clear = PendingIntent.getBroadcast(context, 0, intent_clear, 0);
-        views.setImageViewResource(id, R.drawable.clear);
+        views.setImageViewResource(id, R.drawable.disable);
         views.setOnClickPendingIntent(id, pendingIntent_clear);
     }
 
@@ -159,9 +162,15 @@ public class SoundService extends Service {
         Intent intent = new Intent(getApplicationContext(), ReceiverMusicPlay.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
         if(InfoManager.theme == ThemeType.DARK) { // dark
-            views.setImageViewResource(id, context.getResources().getIdentifier("music_play", "drawable", "com.wkdgusdn3.soundcontroller"));
+            views.setImageViewResource(
+                id,
+                context.getResources().getIdentifier(String.format("music_play_%s", ThemeType.DARK.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+            );
         } else { // white
-            views.setImageViewResource(id, context.getResources().getIdentifier("music_play_white", "drawable", "com.wkdgusdn3.soundcontroller"));
+            views.setImageViewResource(
+                id,
+                context.getResources().getIdentifier(String.format("music_play_%s", ThemeType.WHITE.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+            );
         }
         views.setOnClickPendingIntent(id, pedingIntent);
     }
@@ -170,9 +179,15 @@ public class SoundService extends Service {
         Intent intent = new Intent(getApplicationContext(), ReceiverSoundUp.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
         if(InfoManager.theme == ThemeType.DARK) { // dark
-            views.setImageViewResource(id, context.getResources().getIdentifier("sound_up", "drawable", "com.wkdgusdn3.soundcontroller"));
+            views.setImageViewResource(
+                id,
+                context.getResources().getIdentifier(String.format("volume_up_%s", ThemeType.DARK.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+            );
         } else { // white
-            views.setImageViewResource(id, context.getResources().getIdentifier("sound_up_white", "drawable", "com.wkdgusdn3.soundcontroller"));
+            views.setImageViewResource(
+                id,
+                context.getResources().getIdentifier(String.format("volume_up_%s", ThemeType.WHITE.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+            );
         }
         views.setOnClickPendingIntent(id, pedingIntent);
     }
@@ -181,9 +196,15 @@ public class SoundService extends Service {
         Intent intent = new Intent(getApplicationContext(), ReceiverSoundDown.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
         if(InfoManager.theme == ThemeType.DARK) { // dark
-            views.setImageViewResource(id, context.getResources().getIdentifier("sound_down", "drawable", "com.wkdgusdn3.soundcontroller"));
+            views.setImageViewResource(
+                id,
+                context.getResources().getIdentifier(String.format("volume_down_%s", ThemeType.DARK.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+            );
         } else { // white
-            views.setImageViewResource(id, context.getResources().getIdentifier("sound_down_white", "drawable", "com.wkdgusdn3.soundcontroller"));
+            views.setImageViewResource(
+                id,
+                context.getResources().getIdentifier(String.format("volume_down_%s", ThemeType.WHITE.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+            );
         }
         views.setOnClickPendingIntent(id, pedingIntent);
     }
@@ -197,9 +218,15 @@ public class SoundService extends Service {
             final PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
             if(InfoManager.theme == ThemeType.DARK) { // dark
-                views.setImageViewResource(id, context.getResources().getIdentifier("sound_vol" + soundFunctionType.getVolumeAmount(), "drawable", "com.wkdgusdn3.soundcontroller"));
+                views.setImageViewResource(
+                    id,
+                    context.getResources().getIdentifier(String.format("volume_%s_%s", soundFunctionType.getVolumeAmount(), ThemeType.DARK.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+                );
             } else { // white
-                views.setImageViewResource(id, context.getResources().getIdentifier("sound_vol" + soundFunctionType.getVolumeAmount()+"_white", "drawable", "com.wkdgusdn3.soundcontroller"));
+                views.setImageViewResource(
+                    id,
+                    context.getResources().getIdentifier(String.format("volume_%s_%s", soundFunctionType.getVolumeAmount(), ThemeType.WHITE.getResourceAdditionName()), "drawable", "com.wkdgusdn3.soundcontroller")
+                );
             }
 
             views.setOnClickPendingIntent(id, pedingIntent);

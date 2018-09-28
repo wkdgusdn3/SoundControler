@@ -5,13 +5,15 @@ import lombok.Getter;
 @Getter
 public enum ThemeType {
 
-    DARK(0),
-    WHITE(1);
+    DARK(0, "dark"),
+    WHITE(1, "white");
 
     private int position;
+    private String resourceAdditionName;
 
-    ThemeType(int position) {
+    ThemeType(int position, String resourceAdditionName) {
         this.position = position;
+        this.resourceAdditionName = resourceAdditionName;
     }
 
     public static ThemeType getThemeType(int position) {
