@@ -52,6 +52,11 @@
         <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound13" />
         <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound14" />
         <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound15" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverVolumeChange" >
+            <intent-filter>
+                <action android:name="android.media.VOLUME_CHANGED_ACTION" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

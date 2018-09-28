@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,6 @@ import com.wkdgusdn3.manager.InfoManager;
 import com.wkdgusdn3.manager.SharedPreferenceManager;
 import com.wkdgusdn3.model.SoundFunctionType;
 import com.wkdgusdn3.model.ThemeType;
-import com.wkdgusdn3.observer.VolumeChangeObserver;
 import com.wkdgusdn3.service.SoundService;
 
 public class MainActivity extends Activity {
@@ -101,22 +99,6 @@ public class MainActivity extends Activity {
                 editor.commit();
                 InfoManager.setData(getApplicationContext());
 
-                if(InfoManager.isEnableCurrentVolumeIcon) {
-
-                    // volumeChangeObserver 등록
-                    VolumeChangeObserver volumeChangeObserver = new VolumeChangeObserver(getApplicationContext(), new Handler());
-                    getApplicationContext()
-                            .getContentResolver()
-                            .registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeChangeObserver );
-                } else {
-
-                    // volumeChangeObserver 제거
-                    VolumeChangeObserver volumeChangeObserver = new VolumeChangeObserver(getApplicationContext(), new Handler());
-                    getApplicationContext()
-                            .getContentResolver()
-                            .unregisterContentObserver(volumeChangeObserver);
-                }
-
                 startService();
             }
         });
@@ -125,8 +107,8 @@ public class MainActivity extends Activity {
     void startService() {
         Intent soundServiceIntent = new Intent(getApplicationContext(), SoundService.class);
 
-        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        nm.cancel(3);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(3);
         stopService(soundServiceIntent);
 
         InfoManager.setData(getApplicationContext());

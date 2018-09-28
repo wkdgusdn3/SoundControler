@@ -5,8 +5,10 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.IBinder;
@@ -16,6 +18,7 @@ import com.wkdgusdn3.broadcastreceiver.ReceiverClear;
 import com.wkdgusdn3.broadcastreceiver.ReceiverMusicPlay;
 import com.wkdgusdn3.broadcastreceiver.ReceiverSoundDown;
 import com.wkdgusdn3.broadcastreceiver.ReceiverSoundUp;
+import com.wkdgusdn3.broadcastreceiver.ReceiverVolumeChange;
 import com.wkdgusdn3.manager.InfoManager;
 import com.wkdgusdn3.model.SoundFunctionType;
 import com.wkdgusdn3.model.ThemeType;
@@ -51,6 +54,7 @@ public class SoundService extends Service {
         }
         notification.flags = Notification.FLAG_NO_CLEAR;
 
+        // set Views
         RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.sound_notification);
         views.setImageViewResource(R.id.sound_icon, R.drawable.sound_icon);
         setCurrentVolume(views);
@@ -75,6 +79,10 @@ public class SoundService extends Service {
             }
         }
 
+        // volume change 
+        enableOrDisableVolumeChangeReceiver();
+
+        // regist to notification bar
         notification.contentView = views;
         notificationManager.notify(3, notification);
 
@@ -96,6 +104,7 @@ public class SoundService extends Service {
         builder.setOngoing(true);
         notification = builder.build();
 
+        // set Views
         RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.sound_notification);
         views.setImageViewResource(R.id.sound_icon, R.drawable.sound_icon);
         setCurrentVolume(views);
@@ -121,6 +130,10 @@ public class SoundService extends Service {
             }
         }
 
+        // volume change
+        enableOrDisableVolumeChangeReceiver();
+
+        // regist to notification bar
         notification.contentView = views;
         notificationManager.notify(3, notification);
 
@@ -239,6 +252,26 @@ public class SoundService extends Service {
 
         InfoManager.notificationManager = notificationManager;
         InfoManager.notification = notification;
+    }
+
+    void enableOrDisableVolumeChangeReceiver() {
+
+        ComponentName volumeChangeReceiverComponentName = new ComponentName(getApplicationContext(), ReceiverVolumeChange.class);
+        PackageManager packageManager = getApplicationContext().getPackageManager();
+
+        if(InfoManager.isEnableCurrentVolumeIcon) {
+            packageManager.setComponentEnabledSetting( // currentVolume enable
+                    volumeChangeReceiverComponentName,
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                    PackageManager.DONT_KILL_APP
+            );
+        } else {
+            packageManager.setComponentEnabledSetting( // currentVolume disable
+                    volumeChangeReceiverComponentName,
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                    PackageManager.DONT_KILL_APP
+            );
+        }
     }
 
     @Override
