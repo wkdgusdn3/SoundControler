@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 
-public class ReceiverSoundDown extends BroadcastReceiver {
+public class VolumeDownReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 

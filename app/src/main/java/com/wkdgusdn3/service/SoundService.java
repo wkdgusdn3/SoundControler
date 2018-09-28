@@ -14,11 +14,11 @@ import android.os.Build;
 import android.os.IBinder;
 import android.widget.RemoteViews;
 
-import com.wkdgusdn3.broadcastreceiver.ReceiverClear;
-import com.wkdgusdn3.broadcastreceiver.ReceiverMusicPlay;
-import com.wkdgusdn3.broadcastreceiver.ReceiverSoundDown;
-import com.wkdgusdn3.broadcastreceiver.ReceiverSoundUp;
-import com.wkdgusdn3.broadcastreceiver.ReceiverVolumeChange;
+import com.wkdgusdn3.broadcastreceiver.DisableReceiver;
+import com.wkdgusdn3.broadcastreceiver.MusicPlayReceiver;
+import com.wkdgusdn3.broadcastreceiver.VolumeDownReceiver;
+import com.wkdgusdn3.broadcastreceiver.VolumeUpReceiver;
+import com.wkdgusdn3.broadcastreceiver.VolumeChangeReceiver;
 import com.wkdgusdn3.manager.InfoManager;
 import com.wkdgusdn3.model.SoundFunctionType;
 import com.wkdgusdn3.model.ThemeType;
@@ -165,14 +165,14 @@ public class SoundService extends Service {
     }
 
     void setDisable(RemoteViews views, int id) {
-        Intent intent_clear = new Intent(getApplicationContext(), ReceiverClear.class);
+        Intent intent_clear = new Intent(getApplicationContext(), DisableReceiver.class);
         PendingIntent pendingIntent_clear = PendingIntent.getBroadcast(context, 0, intent_clear, 0);
         views.setImageViewResource(id, R.drawable.disable);
         views.setOnClickPendingIntent(id, pendingIntent_clear);
     }
 
     void setMusicPlay(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverMusicPlay.class);
+        Intent intent = new Intent(getApplicationContext(), MusicPlayReceiver.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
         if(InfoManager.theme == ThemeType.DARK) { // dark
             views.setImageViewResource(
@@ -189,7 +189,7 @@ public class SoundService extends Service {
     }
 
     void setSoundUp(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverSoundUp.class);
+        Intent intent = new Intent(getApplicationContext(), VolumeUpReceiver.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
         if(InfoManager.theme == ThemeType.DARK) { // dark
             views.setImageViewResource(
@@ -206,7 +206,7 @@ public class SoundService extends Service {
     }
 
     void setSoundDown(RemoteViews views, int id) {
-        Intent intent = new Intent(getApplicationContext(), ReceiverSoundDown.class);
+        Intent intent = new Intent(getApplicationContext(), VolumeDownReceiver.class);
         PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
         if(InfoManager.theme == ThemeType.DARK) { // dark
             views.setImageViewResource(
@@ -226,7 +226,7 @@ public class SoundService extends Service {
 
         try {
 
-            Intent intent = new Intent(getApplicationContext(), Class.forName("com.wkdgusdn3.broadcastreceiver.ReceiverSetSound" + soundFunctionType.getVolumeAmount()));
+            Intent intent = new Intent(getApplicationContext(), Class.forName(String.format("com.wkdgusdn3.broadcastreceiver.SetVolumeTo%sReceiver", soundFunctionType.getVolumeAmount())));
             intent.putExtra("VOL", soundFunctionType.getVolumeAmount());
             final PendingIntent pedingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
@@ -256,7 +256,7 @@ public class SoundService extends Service {
 
     void enableOrDisableVolumeChangeReceiver() {
 
-        ComponentName volumeChangeReceiverComponentName = new ComponentName(getApplicationContext(), ReceiverVolumeChange.class);
+        ComponentName volumeChangeReceiverComponentName = new ComponentName(getApplicationContext(), VolumeChangeReceiver.class);
         PackageManager packageManager = getApplicationContext().getPackageManager();
 
         if(InfoManager.isEnableCurrentVolumeIcon) {

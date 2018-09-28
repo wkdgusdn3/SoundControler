@@ -5,11 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 
-public class ReceiverSetSound0 extends BroadcastReceiver {
+public class SetVolumeTo3Receiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        int targetSound = 0;
+        int targetSound = 3;
 
         AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
 

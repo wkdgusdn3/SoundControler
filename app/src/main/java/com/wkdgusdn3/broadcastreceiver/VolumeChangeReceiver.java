@@ -12,7 +12,7 @@ import com.wkdgusdn3.manager.InfoManager;
 import com.wkdgusdn3.model.ThemeType;
 import com.wkdgusdn3.soundcontroller.R;
 
-public class ReceiverVolumeChange extends BroadcastReceiver {
+public class VolumeChangeReceiver extends BroadcastReceiver {
 
     private final int currentVolumeId = R.id.current_volume;
 

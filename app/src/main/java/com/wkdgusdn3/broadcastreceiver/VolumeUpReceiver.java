@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.util.Log;
 
-public class ReceiverSoundUp extends BroadcastReceiver {
+public class VolumeUpReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 

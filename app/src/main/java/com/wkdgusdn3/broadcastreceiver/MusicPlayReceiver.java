@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.KeyEvent;
 
-public class ReceiverMusicPlay extends BroadcastReceiver {
+public class MusicPlayReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         try {

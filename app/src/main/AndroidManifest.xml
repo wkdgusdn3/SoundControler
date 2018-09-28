@@ -29,30 +29,30 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverMusicPlay">
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.MusicPlayReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundUp" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSoundDown" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound0" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound1" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound2" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound3" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound4" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound5" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound6" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound7" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound8" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound9" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound10" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound11" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound12" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound13" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound14" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverSetSound15" />
-        <receiver android:name="com.wkdgusdn3.broadcastreceiver.ReceiverVolumeChange" >
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.VolumeUpReceiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.VolumeDownReceiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo0Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo1Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo2Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo3Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo4Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo5Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo6Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo7Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo8Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo9Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo10Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo11Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo12Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo13Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo14Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.SetVolumeTo15Receiver" />
+        <receiver android:name="com.wkdgusdn3.broadcastreceiver.VolumeChangeReceiver" >
             <intent-filter>
                 <action android:name="android.media.VOLUME_CHANGED_ACTION" />
             </intent-filter>
