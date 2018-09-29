@@ -3,7 +3,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="application_enable">アプリケーション有効化</string>
-    <string name="status_bar_icon">ステータスバーのアイコン</string>
+    <string name="status_bar_icon_enable">ステータスバーアイコン有効</string>
+    <string name="current_volume_icon_enable">現在のボリュームアイコン有効</string>
     <string name="theme">テーマ</string>
     <string name="apply">適用</string>
 

@@ -3,7 +3,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="application_enable">應用啟用</string>
-    <string name="status_bar_icon">狀態欄圖標</string>
+    <string name="status_bar_icon_enable">狀態欄圖標啟用</string>
+    <string name="current_volume_icon_enable">當前音量圖標啟用</string>
     <string name="theme">主題</string>
     <string name="apply">應用</string>
 

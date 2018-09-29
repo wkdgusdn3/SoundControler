@@ -3,7 +3,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="application_enable">Application Enable</string>
-    <string name="status_bar_icon">Status Bar Icon</string>
+    <string name="status_bar_icon_enable">Status Bar Icon Enable</string>
+    <string name="current_volume_icon_enable">Current Volume Icon Enable</string>
     <string name="theme">Theme</string>
     <string name="apply">Apply</string>
 

@@ -8,8 +8,8 @@ android {
         applicationId "com.wkdgusdn3.soundcontroller"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 7
-        versionName "1.0.6"
+        versionCode 8
+        versionName "1.1.0"
     }
     buildTypes {
         release {
@@ -20,5 +20,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    provided 'org.projectlombok:lombok:1.16.16'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'org.slf4j:slf4j-android:1.7.25'
 }

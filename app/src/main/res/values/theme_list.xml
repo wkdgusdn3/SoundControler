@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themeList">
+        <item name="dark">@string/dark</item>
+        <item name="white">@string/white</item>
+    </string-array>
+</resources>

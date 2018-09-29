@@ -13,25 +13,27 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.wkdgusdn3.manager.InfoManager;
-import com.wkdgusdn3.model.SharedPreferenceText;
+import com.wkdgusdn3.manager.SharedPreferenceManager;
 import com.wkdgusdn3.model.SoundFunctionType;
+import com.wkdgusdn3.model.ThemeType;
 import com.wkdgusdn3.service.SoundService;
 
 public class MainActivity extends Activity {
 
-    CheckBox checkBox_operation;
-    CheckBox checkBox_icon;
-    Spinner spinner_color;
-    Spinner[] spinners_function = new Spinner[4];
-    Button button_apply;
+    private CheckBox applicationEnableCheckBox;
+    private CheckBox statusBarIconEnableCheckBox;
+    private CheckBox currentVolumeIconEnableCheckBox;
+    private Spinner themeSpinner;
+    private Spinner[] functionSpinners = new Spinner[4];
+    private Button applyButton;
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.wkdgusdn3.soundcontroller.R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         InfoManager.setData(getApplicationContext());
 
@@ -49,48 +51,52 @@ public class MainActivity extends Activity {
     }
 
     void setView() {
-        checkBox_operation = (CheckBox) findViewById(R.id.main_operationCheckBox);
-        checkBox_icon = (CheckBox) findViewById(R.id.main_iconCheckBox);
-        spinner_color = (Spinner) findViewById(R.id.main_color);
-        spinners_function[0] = (Spinner) findViewById(R.id.main_function1);
-        spinners_function[1] = (Spinner) findViewById(R.id.main_function2);
-        spinners_function[2] = (Spinner) findViewById(R.id.main_function3);
-        spinners_function[3] = (Spinner) findViewById(R.id.main_function4);
-        button_apply = (Button) findViewById(R.id.main_apply);
+        applicationEnableCheckBox = (CheckBox) findViewById(R.id.main_applicationEnableCheckBox);
+        statusBarIconEnableCheckBox = (CheckBox) findViewById(R.id.main_statusBarIconEnableCheckBox);
+        currentVolumeIconEnableCheckBox = (CheckBox) findViewById(R.id.main_currentVolumeCheckBox);
+        themeSpinner = (Spinner) findViewById(R.id.main_theme);
+        functionSpinners[0] = (Spinner) findViewById(R.id.main_button1);
+        functionSpinners[1] = (Spinner) findViewById(R.id.main_button2);
+        functionSpinners[2] = (Spinner) findViewById(R.id.main_button3);
+        functionSpinners[3] = (Spinner) findViewById(R.id.main_button4);
+        applyButton = (Button) findViewById(R.id.main_apply);
     }
 
     void initializeView() { // 옵션을 이전에 저장된 상태로 초기화
-        if (InfoManager.isApplicationEnable) {
-            checkBox_operation.setChecked(true);
+        if (InfoManager.isEnableApplication) {
+            applicationEnableCheckBox.setChecked(true);
         }
-        if (InfoManager.isSeeStatusBarIcon) {
-            checkBox_icon.setChecked(true);
+        if(InfoManager.isEnableCurrentVolumeIcon) {
+            currentVolumeIconEnableCheckBox.setChecked(true);
+        }
+        if (InfoManager.isEnableStatusBarIcon) {
+            statusBarIconEnableCheckBox.setChecked(true);
         }
 
-        spinner_color.setSelection(InfoManager.theme);
+        themeSpinner.setSelection(InfoManager.theme.getPosition());
 
         for (int i = 0; i < 4; i++) {
-            spinners_function[i].setSelection(InfoManager.buttons[i].getPosition());
+            functionSpinners[i].setSelection(InfoManager.buttons[i].getPosition());
         }
     }
 
     void setClickListener() {
 
-        button_apply.setOnClickListener(new View.OnClickListener() {
+        applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                editor.putBoolean(SharedPreferenceText.IS_APPLICATION_ENABLE, checkBox_operation.isChecked());
-                editor.putBoolean(SharedPreferenceText.IS_SEE_STATUS_BAR_ICON, checkBox_icon.isChecked());
-                editor.putInt(SharedPreferenceText.THEME, spinner_color.getSelectedItemPosition());
+                editor.putBoolean(SharedPreferenceManager.IS_ENABLE_APPLICATION, applicationEnableCheckBox.isChecked());
+                editor.putBoolean(SharedPreferenceManager.IS_ENABLE_STATUS_BAR_ICON, statusBarIconEnableCheckBox.isChecked());
+                editor.putBoolean(SharedPreferenceManager.IS_ENABLE_CURRENT_VOLUME_ICON, currentVolumeIconEnableCheckBox.isChecked());
+                editor.putString(SharedPreferenceManager.THEME, ThemeType.getThemeType(themeSpinner.getSelectedItemPosition()).toString());
 
-                editor.putString(SharedPreferenceText.BUTTON_01, SoundFunctionType.getSoundFunction(spinners_function[0].getSelectedItemPosition()).toString());
-                editor.putString(SharedPreferenceText.BUTTON_02, SoundFunctionType.getSoundFunction(spinners_function[1].getSelectedItemPosition()).toString());
-                editor.putString(SharedPreferenceText.BUTTON_03, SoundFunctionType.getSoundFunction(spinners_function[2].getSelectedItemPosition()).toString());
-                editor.putString(SharedPreferenceText.BUTTON_04, SoundFunctionType.getSoundFunction(spinners_function[3].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_01, SoundFunctionType.getSoundFunction(functionSpinners[0].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_02, SoundFunctionType.getSoundFunction(functionSpinners[1].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_03, SoundFunctionType.getSoundFunction(functionSpinners[2].getSelectedItemPosition()).toString());
+                editor.putString(SharedPreferenceManager.BUTTON_04, SoundFunctionType.getSoundFunction(functionSpinners[3].getSelectedItemPosition()).toString());
 
                 editor.commit();
-
                 InfoManager.setData(getApplicationContext());
 
                 startService();
@@ -101,13 +107,13 @@ public class MainActivity extends Activity {
     void startService() {
         Intent soundServiceIntent = new Intent(getApplicationContext(), SoundService.class);
 
-        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        nm.cancel(3);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(3);
         stopService(soundServiceIntent);
 
         InfoManager.setData(getApplicationContext());
 
-        if (InfoManager.isApplicationEnable) {
+        if (InfoManager.isEnableApplication) {
             startService(soundServiceIntent);
         }
     }

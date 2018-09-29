@@ -1,7 +1,5 @@
 package com.wkdgusdn3.model;
 
-import java.util.Objects;
-
 import lombok.Getter;
 
 @Getter
