@@ -2,6 +2,7 @@ package com.wkdgusdn3.service;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -10,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
+import android.media.session.MediaSession;
 import android.os.Build;
 import android.os.IBinder;
 import android.widget.RemoteViews;
@@ -36,11 +38,18 @@ public class SoundService extends Service {
         InfoManager.setData(getApplicationContext());
         context = getApplicationContext();
 
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationOreo();
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             notificationJellyBean();
         } else {
             notificationIceCreamSandwich();
         }
+    }
+
+    @Override
+    public IBinder onBind(Intent arg0) {
+        return null;
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -79,8 +88,8 @@ public class SoundService extends Service {
             }
         }
 
-        // volume change 
-        enableOrDisableVolumeChangeReceiver();
+        // set volumeChangeReceiver
+        setVolumeChangeReceiver();
 
         // regist to notification bar
         notification.contentView = views;
@@ -130,11 +139,65 @@ public class SoundService extends Service {
             }
         }
 
-        // volume change
-        enableOrDisableVolumeChangeReceiver();
+        // set volumeChangeReceiver
+        setVolumeChangeReceiver();
 
         // regist to notification bar
         notification.contentView = views;
+        notificationManager.notify(3, notification);
+
+        setNotificationInfo(notificationManager, notification);
+    }
+
+    @TargetApi(Build.VERSION_CODES.O)
+    void notificationOreo() {
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // set notification channel
+        NotificationChannel notificationChannel = new NotificationChannel("SoundController", "SoundController", NotificationManager.IMPORTANCE_HIGH);
+        notificationManager.createNotificationChannel(notificationChannel);
+
+        // set notification builder
+        Notification.Builder builder = new Notification.Builder(this, "SoundController")
+                .setSmallIcon(R.drawable.notification_icon)
+                .setTicker("SoundController")
+                .setOngoing(true);
+
+        // set notification
+        Notification notification = builder.build();
+
+        // set Views
+        RemoteViews remoteViews = new RemoteViews(this.getPackageName(), R.layout.sound_notification);
+        remoteViews.setImageViewResource(R.id.sound_icon, R.drawable.sound_icon);
+        setCurrentVolume(remoteViews);
+
+        for (int i = 0; i < 4; i++) {
+            switch (InfoManager.buttons[i]) {
+                case DISABLE:
+                    setDisable(remoteViews, functionId[i]);
+                    break;
+                case MUSIC_PLAY:
+                    setMusicPlay(remoteViews, functionId[i]);
+                    break;
+                case VOLUME_DOWN:
+                    setSoundDown(remoteViews, functionId[i]);
+                    break;
+                case VOLUME_UP:
+                    setSoundUp(remoteViews, functionId[i]);
+                    break;
+                default:
+                    setSound(remoteViews, functionId[i], InfoManager.buttons[i]);
+                    break;
+
+            }
+        }
+
+        // set volumeChangeReceiver
+        setVolumeChangeReceiver();
+
+        // regist to notification bar
+        notification.contentView = remoteViews;
         notificationManager.notify(3, notification);
 
         setNotificationInfo(notificationManager, notification);
@@ -254,7 +317,7 @@ public class SoundService extends Service {
         InfoManager.notification = notification;
     }
 
-    void enableOrDisableVolumeChangeReceiver() {
+    void setVolumeChangeReceiver() {
 
         ComponentName volumeChangeReceiverComponentName = new ComponentName(getApplicationContext(), VolumeChangeReceiver.class);
         PackageManager packageManager = getApplicationContext().getPackageManager();
@@ -272,10 +335,5 @@ public class SoundService extends Service {
                     PackageManager.DONT_KILL_APP
             );
         }
-    }
-
-    @Override
-    public IBinder onBind(Intent arg0) {
-        return null;
     }
 }
