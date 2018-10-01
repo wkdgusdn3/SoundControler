@@ -23,6 +23,12 @@ public class VolumeChangeReceiver extends BroadcastReceiver {
 
             NotificationManager notificationManager = InfoManager.notificationManager;
             Notification notification = InfoManager.notification;
+
+            if (notificationManager == null
+                || notification == null) {
+                return;
+            }
+
             RemoteViews remoteViews = InfoManager.notification.contentView;
 
             AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
